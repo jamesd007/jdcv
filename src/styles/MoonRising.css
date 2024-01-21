@@ -1,0 +1,39 @@
+
+@keyframes moonRising {
+    0% {
+      transform: translateY(200%);
+      opacity: 1;
+    }
+    /* 30%{
+      transform: translateY(67%);
+      opacity: 0.67;
+    }
+    60%{
+      transform: translateY(134%);
+      opacity:0.33;
+    } */
+    100% {
+      transform: translateY(-100%);
+      opacity:0.5;
+    }
+  }
+  
+  @keyframes moonOverlayChange {
+    0% {
+      transform: translateY(200%);
+      background-color: rgba(255, 255, 255, 0); /* Fully transparent white */
+    }
+    /* 30% {
+      transform: translateY(67%);
+      background-color: rgba(255, 255, 255, 0.33); 
+    }
+    60%{
+      transform: translateY(134%);
+      background-color: rgba(255, 255, 255, 0.67); 
+    } */
+    100% {
+      transform: translateY(-100%);
+      background-color: rgba(255, 255, 255, 1); /* Fully opaque white */
+    }
+  }
+  

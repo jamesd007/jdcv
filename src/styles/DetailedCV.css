@@ -1,0 +1,50 @@
+h2{
+color:darkblue;
+margin:1rem 0 0.5rem 0;
+}
+h3{
+color:#1f1fdd;     
+}
+h4{
+     margin:0.5rem 0 0 0.5rem;
+}
+ul{
+     margin: 0 0 0 0
+}
+
+.container{
+     overflow:hidden;
+     overflow-y:auto;
+     position:relative;
+}
+    
+    .cellContainer{
+     height:180px;
+    }
+    
+    @keyframes skyLighter {
+     0%{
+    opacity: 1;
+     }
+     100%{
+    opacity:0.2;
+     }
+    }
+    
+    .scrollToTopButton{
+     display:flex;
+     position:sticky;
+     bottom:0;
+     float: right;
+     z-index:1;
+     margin:15px;
+     width:fit-content;
+     height:24px;
+     background-color: #1f1fdd;
+     color: aliceblue;
+     border:1px solid darkblue;
+     border-radius: 8px;
+     padding:8px 12px;
+     align-items: center;
+    }
+    
