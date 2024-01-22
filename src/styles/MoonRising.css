@@ -1,7 +1,7 @@
 
 @keyframes moonRising {
     0% {
-      transform: translateY(200%);
+      transform: translateY(160%);
       opacity: 1;
     }
     /* 30%{
@@ -20,20 +20,61 @@
   
   @keyframes moonOverlayChange {
     0% {
-      transform: translateY(200%);
+      transform: translateY(160%);
       background-color: rgba(255, 255, 255, 0); /* Fully transparent white */
     }
-    /* 30% {
-      transform: translateY(67%);
-      background-color: rgba(255, 255, 255, 0.33); 
+    50% {
+      background-color: rgba(255, 255, 255, 1); /* Fully opaque white */
     }
-    60%{
-      transform: translateY(134%);
-      background-color: rgba(255, 255, 255, 0.67); 
-    } */
     100% {
       transform: translateY(-100%);
       background-color: rgba(255, 255, 255, 1); /* Fully opaque white */
     }
   }
   
+  @keyframes fadeIn {
+    to {
+      opacity: 1; /* Fade in to full opacity */
+    }
+  }
+
+  @keyframes lighten {
+    0% {
+      /* background-color: black; */
+       background-color: rgba(255, 255, 255, 0); 
+    }
+    15%{
+      backgroundColor:#050a89;
+      /* opacity:1; */
+    }
+    100% {
+      backgroundColor:#0109c0;
+    } 
+  }
+  
+@keyframes skyOverlayChange {
+  0% {
+    background-color: rgba(0, 0, 0, 1); 
+  }
+  15% {
+    background-color:transparent;
+  }
+}
+    
+@keyframes skyTransition {
+  0% {
+    background-color: #010101; 
+  }
+  25% {
+    background-color: #040a70; 
+  }
+  50% {
+    background-color: #050b9d; 
+  }
+  75% {
+    background-color: #050dce; 
+  }
+  100% {
+    background-color: #464efe; 
+  }
+}

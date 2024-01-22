@@ -7,7 +7,8 @@ const Contents = ({ id,scrollTo }) => {
 
  return (
   <div>
-   <h2>Contents</h2>
+    <h2>Detailed CV</h2>
+   <h3>Contents</h3>
    <ul>
    <li>
      <a href="#personal" onClick={handleScrollTo('personal')}>

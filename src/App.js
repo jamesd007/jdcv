@@ -6,16 +6,13 @@ import SkillsShow from './SkillsShow';
 import JDPic from './JDPic';
 
 function App() {
-  const [screenHeight, setScreenHeight] = useState(window.innerHeight);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const maxCol1Size=300;
   const maxCol2Size=700;
   const maxCol3Size=300;
-  const[displayMode,setDisplayMode]=useState()
   
   useEffect(() => {
     function handleResize() {
-      setScreenHeight(window.innerHeight);
       setScreenWidth(window.innerWidth);
     }
     window.addEventListener("resize", handleResize);

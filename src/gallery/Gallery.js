@@ -20,7 +20,6 @@ import Modals from '../Modals';
 const Gallery = () => {
 const [selectedImage, setSelectedImage] = useState(null);
 const [picStyle, setPicStyle] = useState({});
-const [zoomIn, setZoomIn] = useState(false)
 const [zoomCountIn, setZoomCountIn] = useState(0)
 const [zoomCountOut, setZoomCountOut] = useState(0)
 const [zoomFctr, setZoomFctr] = useState(1)

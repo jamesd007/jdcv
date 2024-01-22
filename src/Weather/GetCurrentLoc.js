@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import test from './icons/04d.png'
 import '../styles/GetCurrentLoc.css'
 
 const WeatherComponent = () => {
@@ -68,7 +67,7 @@ navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
 
   fetchLocationData();
   }
- }, [lon,lat]);
+ }, [API_KEY, lon, lat, done]);
 
  useEffect(() => {
   // Update the weather icon whenever the description changes
@@ -113,8 +112,6 @@ navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
   }
  }, [cityId, API_KEY]);
 
- // Assuming chkDate2 and chkTime2 are already defined as you mentioned
-
 // Combine date and time strings into a single string
 const checkDatePlace=(chkDate2,chkTime2)=>{
   const combinedDateTimeString = `${chkDate2} ${chkTime2}`;  
@@ -131,19 +128,18 @@ const checkDatePlace=(chkDate2,chkTime2)=>{
 }
 
  useEffect(()=>{
-  let chkDate2
   if (forecastArray && forecastArray.length>0){
     let tempFArr=forecastArray[0]
    //conv date
     let timestamp = Number(tempFArr.dateTime)
     let dateAndTime = new Date(timestamp * 1000);
-    let chkdate = new Intl.DateTimeFormat("en-US", {
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
-    }).format(dateAndTime); // 01/11/2021
-   let chkDate2
-   let chkTime2
+    // let chkdate = new Intl.DateTimeFormat("en-US", {
+    //   year: "numeric",
+    //   month: "2-digit",
+    //   day: "2-digit",
+    // }).format(dateAndTime); // 01/11/2021
+  //  let chkDate2
+  //  let chkTime2
    //init vals
     let currDate = null
     let currTime =null

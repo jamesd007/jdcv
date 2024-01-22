@@ -9,15 +9,12 @@ const DetailedCV = ()=>{
  const [screenHeight, setScreenHeight] = useState(window.innerHeight);
  const [showButton, setShowButton] = useState(false);
  const containerRef=useRef()
- const emailAddress = "pers@stardev.co.za";
  const keyValuePairs = [
   ['Surname','Doyle'],
   ['First Names',	'James Oliver'],
   ['Gender',	'Male'],
   ['Nationality',	'South African and Irish'],
   ['Address', 'Johannesburg, South Africa'],
-  // ['email', 'pers@stardev.co.za'],
-  // ['LinkedIn', 'www.linkedin.com/in/james-O-doyle'],
   ['Home language',	'English'],
   ['Other languages',	'Afrikaans'],
   ['Driver’s Licence',	'Code EA']]
