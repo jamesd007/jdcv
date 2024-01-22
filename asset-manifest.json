@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/static/css/main.833d56fa.css",
+    "main.js": "/static/js/main.822106d5.js",
+    "static/media/protea4.jpg": "/static/media/protea4.80462422dbbbb362f8ea.jpg",
+    "static/media/Mandela2.jpg": "/static/media/Mandela2.828f072de9fa1e58bc93.jpg",
+    "static/media/protea3.jpg": "/static/media/protea3.d7d8aa2a9e34c6d8e643.jpg",
+    "static/media/dogs.jpg": "/static/media/dogs.435238cf3720015140e2.jpg",
+    "static/media/fruits4.jpg": "/static/media/fruits4.55e0dd0d7f494bd7216a.jpg",
+    "static/media/fruitcloth.jpg": "/static/media/fruitcloth.648fae281818cba7c3c3.jpg",
+    "static/media/fruits3.jpg": "/static/media/fruits3.64389375517160fb966c.jpg",
+    "static/media/tulips.jpg": "/static/media/tulips.1be46f01e5fe2df656f3.jpg",
+    "static/media/fruits2.jpg": "/static/media/fruits2.12f94fe468a2466763b2.jpg",
+    "static/media/fruits1.jpg": "/static/media/fruits1.b77b6c91543793b5f954.jpg",
+    "static/media/Mandela1.png": "/static/media/Mandela1.df78d87ac822335a49d4.png",
+    "static/media/moon.png": "/static/media/moon.ff534eb32966d8a3b044.png",
+    "static/media/lemons.jpg": "/static/media/lemons.7c1599ba1fcbfdc78c08.jpg",
+    "static/media/strawberry.jpg": "/static/media/strawberry.324446d8551faa53eb0a.jpg",
+    "static/media/protea1.jpg": "/static/media/protea1.d246fa465e861d54a7f5.jpg",
+    "static/media/protea2.jpg": "/static/media/protea2.e2f3b53b1a3652982d72.jpg",
+    "static/media/JDCVPIC3.png": "/static/media/JDCVPIC3.2221288803c0da155dc5.png",
+    "static/media/bluetrees.png": "/static/media/bluetrees.20e26f5416bcf2fe319d.png",
+    "index.html": "/index.html",
+    "main.833d56fa.css.map": "/static/css/main.833d56fa.css.map",
+    "main.822106d5.js.map": "/static/js/main.822106d5.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.833d56fa.css",
+    "static/js/main.822106d5.js"
+  ]
+}
