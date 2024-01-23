@@ -1,21 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/GetCurrentLoc.css'
 
-const WeatherComponent = () => {
- const [closestCity, setClosestCity] = useState('');
- const [cityId, setCityId] = useState(null);
- const [lat, setLat] = useState(null);
- const [lon, setLon] = useState(null);
- const [status, setStatus] = useState(null);
- const [temp, setTemp] = useState('');
- const [humidity, setHumidity] = useState('');
- const [description, setDescription] = useState('');
- const [icon, setIcon] = useState('');
- const[forecastArray,setForecastArray]=useState([])
- const API_KEY = process.env.REACT_APP_API_KEY
- const [done,setDone]=useState(false)
- const [fArr,setFArr] = useState([]);
-//  const REACT_APP_MAPBOX_API = process.env.REACT_APP_MAPBOX_API
+  const WeatherComponent = () => {
+  const [closestCity, setClosestCity] = useState('');
+  const [cityId, setCityId] = useState(null);
+  const [lat, setLat] = useState(null);
+  const [lon, setLon] = useState(null);
+  const [status, setStatus] = useState(null);
+  const [temp, setTemp] = useState('');
+  const [humidity, setHumidity] = useState('');
+  const [description, setDescription] = useState('');
+  const [icon, setIcon] = useState('');
+  const[forecastArray,setForecastArray]=useState([])
+  const API_KEY = process.env.REACT_APP_API_KEY
+  const [done,setDone]=useState(false)
+  const [fArr,setFArr] = useState([]);
+  const [locPermission,setLocPermission]=useState(true)
+  // const REACT_APP_MAPBOX_API = process.env.REACT_APP_MAPBOX_API
 
 const successCallback = (position) => {
   setLon(position.coords.longitude);
@@ -23,6 +24,7 @@ const successCallback = (position) => {
  };
 
  const errorCallback = (status) => {
+  setLocPermission(false)
   setStatus('Geolocation API error')
  };
  const geolocationAPI = navigator.geolocation;
@@ -242,6 +244,8 @@ const formatData=(data)=>{
 
  return (
   <div>
+    {locPermission 
+    && <div>
     <h3>Current Weather in {closestCity}</h3>
     <p>Temperature: {temp}°C</p>
     <p>Humidity: {humidity}%</p>
@@ -271,6 +275,8 @@ const formatData=(data)=>{
       </div>
     ))}
     </div>
+    </div>
+  }
   </div>
  );
 };

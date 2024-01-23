@@ -46,7 +46,7 @@ const images = [
 
   const heightStyle = (h) => {
     return {
-      maxHeight:"90vh",
+      maxHeight:"80vh",
       height: h * 1 + "px",
       width: "auto",
       resizeMode: "cover",

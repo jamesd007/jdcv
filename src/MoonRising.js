@@ -98,14 +98,14 @@ const MoonRising = () => {
         style={{
           position:"absolute",
           left: screenWidth<550 
-            ? "140px" 
+            ? "9rem" 
             : screenWidth<=1000
-              ? "140px"
+              ? "9rem"
               : "0",
-          bottom:"0",
+          bottom:"0.2rem",
           fontSize:screenWidth<=1000
-          ? "2rem"
-          : "2.5rem",
+          ? "1.8rem"
+          : "1.8rem",
           fontWeight:"bold",
           marginLeft:"1rem",
           zIndex: screenWidth<550 ? "99":"9",
@@ -114,10 +114,11 @@ const MoonRising = () => {
             : screenWidth<=1000
               ? "darkkhaki"
               : "lightsteelblue"}}>
-        <p>James Doyle</p>
+        <p style={{margin:"0"}}>James Doyle</p>
         <p style={{fontSize:screenWidth<=1000
-            ? "1.25rem"
-            : "1.5rem"}}>
+            ? "1.2rem"
+            : "1.4rem",
+            margin:"0"}}>
             Curriculum Vitae
         </p>
       </div>
