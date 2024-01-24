@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import '../styles/GetCurrentLoc.css'
 
   const WeatherComponent = () => {
@@ -16,6 +16,8 @@ import '../styles/GetCurrentLoc.css'
   const [done,setDone]=useState(false)
   const [fArr,setFArr] = useState([]);
   const [locPermission,setLocPermission]=useState(true)
+  const colRef=useRef(null)
+  const [colWidth,setColWidth]=useState(0)
   // const REACT_APP_MAPBOX_API = process.env.REACT_APP_MAPBOX_API
 
 const successCallback = (position) => {
@@ -242,8 +244,15 @@ const formatData=(data)=>{
   );
 };
 
+useEffect(()=>{
+  if (colRef.current) {
+    setColWidth(colRef?.current?.clientWidth / 5)
+  }
+},[colRef?.current?.clientWidth])
+
  return (
-  <div>
+  <div
+  ref={colRef}>
     {locPermission 
     && <div>
     <h3>Current Weather in {closestCity}</h3>
@@ -265,9 +274,12 @@ const formatData=(data)=>{
         </span>
         } 
     </div>
-    <div style={{
-      display:"grid",
-      gridTemplateColumns:"repeat(5,1fr)"
+    <div 
+      style={{
+        display:"grid",
+        // gridTemplateColumns:"repeat(5,1fr)"
+        gridTemplateColumns: `repeat(5, ${colWidth}px)`,
+        gridAutoColumns: `${colWidth}px`,
       }}>
     {fArr.map((item) => (
       <div key={item.dateTime}>

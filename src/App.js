@@ -4,6 +4,7 @@ import Summary from './Summary';
 import DetailedCV from './DetailedCV';
 import SkillsShow from './SkillsShow';
 import JDPic from './JDPic';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 function App() {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -77,23 +78,19 @@ return (
             ? "1fr 1fr"
             : `${maxCol1Size}px 1fr`
           : screenWidth<=1200
-            ? "repeat(3, 1fr)"
+          ?`minmax(0, ${maxCol1Size}px) minmax(0, ${maxCol2Size}px) minmax(0, ${maxCol3Size}px)`
+            // ? "repeat(3, 1fr)"
             : `minmax(0, ${maxCol1Size}px) minmax(0, ${maxCol2Size}px) minmax(0, ${maxCol3Size}px)`
 
     }}>
       <div
         style={{
-          position:screenWidth<=550 
-            ? "absolute" 
-            : screenWidth<=1000
-              ? "absolute"
-              : "relative",
-          top:screenWidth<=550 
-            ? "18px" 
-            : screenWidth<=1000
-            ? "18px"
-            : {},
-            left:screenWidth<=550 
+          position:screenWidth<=1000
+            ? "absolute"
+            : "relative",
+          top:screenWidth<=1000
+            && "18px",
+          left:screenWidth<=550 
             ? "10px" 
             : screenWidth<=1000
             ? "18px'"
@@ -114,7 +111,6 @@ return (
   <div
     style={{
       width:"100%",
-      backgroundColor:"cyan",
       gridColumn:screenWidth<=550
         ? {}
         : "1"
@@ -144,9 +140,9 @@ return (
     {/* {screenWidth<=1000 &&<Footer  //tedtest to be determined
   style={{position:"relative"}}/>} */}
   </div>
+
   {/* {screenWidth>1000 &&<Footer  //tedtest to be determined
   style={{position:"relative"}}/>} */}
-  
     </div>
     </div>
   );

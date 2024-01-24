@@ -176,7 +176,7 @@ return (
     ref={containerRef}
       style={{
         position:"relative",
-        height:`${screenHeight-220}px`}}>
+        height:`${screenHeight-200}px`}}>
       <Contents scrollTo={()=>scrollTo('contents')} id="contents" />
       <Element name="personal">
         <Section id="personal" title="Personal Details" scrollToSection={() => scrollTo('personal')}>

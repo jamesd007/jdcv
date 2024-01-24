@@ -6,6 +6,7 @@ import { FaCaretDown } from "react-icons/fa";
 
 const Summary = ()=>{
   const [screenHeight, setScreenHeight] = useState(window.innerHeight);
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [modalOpen, setModalOpen] = useState(false);
   const emailAddress = "pers@stardev.co.za";
   const containerRef = useRef(null);
@@ -59,6 +60,7 @@ const Summary = ()=>{
 useEffect(() => {
   function handleResize() {
     setScreenHeight(window.innerHeight);
+    setScreenWidth(window.innerWidth);
   }
   window.addEventListener("resize", handleResize);
   return () => {
@@ -83,8 +85,9 @@ const handleExpandScroll=()=>{
     ref={containerRef}
     className="container"
     style={{
-      height:`${screenHeight-220}px`,
-      borderRight:'1px solid darkgrey'}}>
+      height:`${screenHeight-200}px`,
+      // borderRight: screenWidth>1000 && '1px solid darkgrey'
+      }}>
         <h3>
         About Me
       </h3>
