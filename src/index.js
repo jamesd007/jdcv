@@ -1,13 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import * as serviceWorkerRegistration from './serviceWorkerRegistration';
-import firebase from 'firebase/app';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+// import * as serviceWorkerRegistration from './serviceWorkerRegistration';
+import firebase from "firebase/app";
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 import { getAnalytics } from "firebase/analytics";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -21,7 +21,7 @@ const firebaseConfig = {
   storageBucket: "cvjd-a0cd2.appspot.com",
   messagingSenderId: "584468049512",
   appId: "1:584468049512:web:8980dbcfe921ff471195dd",
-  measurementId: "G-7JBVJRBJW8"
+  measurementId: "G-7JBVJRBJW8",
 };
 
 // Initialize Firebase
@@ -30,11 +30,11 @@ const auth = getAuth(app);
 const firestore = getFirestore(app);
 const analytics = getAnalytics(app);
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>
 );
 
-serviceWorkerRegistration.register();
+// serviceWorkerRegistration.register();

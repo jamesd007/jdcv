@@ -1,3 +1,54 @@
+@import '~react-image-gallery/styles/css/image-gallery.css';
+header {
+  background-color: #5c0080;
+  margin-bottom: 4rem;
+}
+
+.header-wrapper {
+  max-width: 1024px;
+  margin: 0 auto;
+  display: flex;
+  padding: 1rem 0;
+  color: #ffffff;
+}
+
+.header-wrapper h1 {
+  font-size: 2rem;
+}
+
+.image-gallery-wrapper {
+  margin-top: 5rem;
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  border: 1px solid rgb(146, 129, 242);
+  box-shadow: #2b15453d 1px 10px 10px 5px;
+}
+
+@media only screen and (min-device-width: 375px) {
+  .header-wrapper {
+    padding: 1rem;
+  }
+}
+
+.image-gallery {
+  width: 50%;
+  height: auto;
+}
+
+.image-gallery-slide img {
+  width: 100%;
+  height: auto;
+  max-height: 40vh;
+  object-fit: cover;
+  overflow: hidden;
+  object-position: center center;
+}
+
+.fullscreen .image-gallery-slide img {
+  max-height: 100vh;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
