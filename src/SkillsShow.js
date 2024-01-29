@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import GetCurrentLoc from "./Weather/GetCurrentLoc";
-import Gallery from "./gallery/Gallery";
-import "./styles/DetailedCV.css";
 import { Link } from "react-router-dom";
 import "./styles/Main.css";
-// import GalleryX from "./gallery/GalleryX";
+import GalleryY from "./gallery/GalleryY";
+import Loadshedding from "./Loadshedding/Loadshedding";
+import LoadsheddingEscom from "./Loadshedding/LoadSheddingEscom";
+import GetQuotes from "./GetQuotes";
 
 const SkillsShow = () => {
   const [screenHeight, setScreenHeight] = useState(window.innerHeight);
@@ -26,16 +27,9 @@ const SkillsShow = () => {
       <div
         style={{
           width: "100%",
-          maxWidth: `{screenWidth}px`,
-          position: "absolute",
-          bottom: "4px",
-          left: "0px",
+          position: "fixed", // Change to fixed
+          bottom: "0px", // Adjust position to bottom
           backgroundColor: "lightsteelblue",
-          // gridColumn:screenWidth<=550
-          // ? {}
-          // : screenWidth<=1000
-          // ? "1 / 3"
-          // : "2"
         }}
       >
         <Link to="/" className="footerLink">
@@ -54,12 +48,11 @@ const SkillsShow = () => {
     <div
       className="container"
       style={{
+        position: "relative",
         height:
           screenWidth <= 1000
-            ? `${screenHeight}px`
-            : // "100vh"
-              `${screenHeight - 200}px`,
-        // borderLeft: screenWidth>1000 && '1px solid darkgrey'
+            ? `${screenHeight - 25}px`
+            : `${screenHeight - 180}px`,
       }}
     >
       <div>
@@ -67,18 +60,19 @@ const SkillsShow = () => {
         <GetCurrentLoc />
       </div>
       {/* <div>
-        Quote for the moment
-      </div>
-      <div>
         Today's headlines
       </div> */}
+      {/* <div>
+        <LoadsheddingEscom />
+      </div> */}
+      {/* <div>
+        <Loadshedding />
+      </div> */}
       <div>
-        {/* <h3>Loadshedding</h3> */}
-        {/* <Loadshedding/> */}
+        <GalleryY />
       </div>
       <div>
-        <Gallery />
-        {/* <GalleryX /> */}
+        <GetQuotes />
       </div>
       {screenWidth <= 1000 && <Footer />}
     </div>

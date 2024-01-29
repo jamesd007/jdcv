@@ -1,0 +1,136 @@
+.frameAll {
+    max-width: 100vw;
+  }
+  
+  .title {
+    position: relative;
+    font-weight: normal;
+    font-size: 5rem;
+    color: darkblue;
+    margin: 1rem;
+  }
+  
+  /* .sectionHdr {
+    margin-left: 1rem;
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-top: 1rem;
+    margin-bottom: 0;
+  } */
+  
+  .subHdr {
+    margin-left: 2rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-top: 0.2rem;
+  }
+  
+  .indent2 {
+    margin-left: 2rem;
+    margin-right: 1rem;
+  }
+  
+  /* ul {
+    margin-left: 1rem;
+    font-size: 1rem;
+    margin-top: 0;
+  } */
+  
+  .mainFtr {
+    /* position: absolute; */
+    /* width: 100%; */
+    height: fit-content;
+    padding: 1rem;
+    /* background-color: rgb(227, 230, 246); */
+  }
+  
+  @media only screen and (min-width: 320px) {
+    * {
+      -webkit-transition: all 0.5s ease;
+      -moz-transition: all 0.5s ease;
+      -o-transition: all 0.5s ease;
+      transition: all 0.5s ease;
+    }
+    body {
+      width: 100vw;
+    }
+    .frameAll {
+      max-width: 100vw;
+    }
+  }
+  
+  @media only screen and (min-width: 319px) and (max-width: 480px) {
+    * {
+      -webkit-transition: all 0.5s ease;
+      -moz-transition: all 0.5s ease;
+      -o-transition: all 0.5s ease;
+      transition: all 0.5s ease;
+    }
+    body {
+        width: 100vw;
+      }
+      .frameAll {
+        max-width: 100vw;
+      }
+    }
+    
+    @media only screen and (min-width: 481px) and (max-width: 768px) {
+      * {
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -o-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+      }
+      body {
+        width: 100vw;
+      }
+      .frameAll {
+        max-width: 100vw;
+      }
+    }
+    
+    @media only screen and (min-width: 769px) and (max-width: 1024px) {
+      * {
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -o-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+      }
+      body {
+        width: 100vw;
+      }
+      .frameAll {
+        max-width: 100vw;
+      }
+    }
+    
+    @media only screen and (min-width: 1025px) and (max-width: 1200px) {
+      * {
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -o-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+      }
+      body {
+        width: 100vw;
+      }
+      .frameAll {
+        max-width: 50vw;
+      }
+    }
+    
+    @media only screen and (min-width: 1201px) {
+      * {
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -o-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+      }
+      body {
+        width: 100vw;
+      }
+      .frameAll {
+        max-width: 50vw;
+      }
+    }
+    

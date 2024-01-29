@@ -4,12 +4,20 @@ import Modals from "./Modals";
 import { FaCaretRight } from "react-icons/fa";
 import { FaCaretDown } from "react-icons/fa";
 
-const Summary = () => {
+const Summary = (props) => {
   const [screenHeight, setScreenHeight] = useState(window.innerHeight);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [modalOpen, setModalOpen] = useState(false);
   const emailAddress = "pers@stardev.co.za";
   const containerRef = useRef(null);
+  const [headsHeight, setHeadsHeight] = useState(
+    props?.headsHeight ? props?.headsHeight : 200
+  );
+
+  useEffect(() => {
+    setHeadsHeight(props.headsHeight);
+  }, [props.headsHeight]);
+
   const skillsData = [
     {
       title: "Civil Engineering",
@@ -103,9 +111,20 @@ const Summary = () => {
       ref={containerRef}
       className="container"
       style={{
-        height: `${screenHeight - 200}px`,
-        // borderRight: screenWidth>1000 && '1px solid darkgrey'
+        position: "relative",
+        height:
+          screenWidth <= 550
+            ? `${screenHeight - 28}px`
+            : `${screenHeight - headsHeight - 28}px`,
+        //   screenWidth <= 1000
+        //     ? `${screenHeight - 25}px`
+        //     : `${screenHeight - headsHeight - 25}px`,
+        // // `${screenHeight - 180}px`,
+        // borderLeft: screenWidth>1000 && '1px solid darkgrey'
       }}
+      // style={{
+      //   height: `${screenHeight - 25}px`,
+      // }}
     >
       <h3>About Me</h3>
       <div style={{ fontSize: "1rem" }}>

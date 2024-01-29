@@ -16,6 +16,9 @@ const DetailedCV = (props) => {
   );
   const ftrRef = useRef(null);
   const [ftrHeight, setFtrHeight] = useState(16);
+  useEffect(() => {
+    setHeadsHeight(props.headsHeight);
+  }, [props.headsHeight]);
 
   const keyValuePairs = [
     ["Surname", "Doyle"],
@@ -26,6 +29,16 @@ const DetailedCV = (props) => {
     ["Home language", "English"],
     ["Other languages", "Afrikaans"],
     ["Driver’s Licence", "Code EA"],
+  ];
+  const detailsKeyValue = [
+    { key: "Surname", value: "Doyle" },
+    { key: "First Names", value: "James Oliver" },
+    { key: "Gender", value: "Male" },
+    { key: "Nationality", value: "South African and Irish" },
+    { key: "Address", value: "Johannesburg, South Africa" },
+    { key: "Home language", value: "English" },
+    { key: "Other languages", value: "Afrikaans" },
+    { key: "Driver’s Licence", value: "Code EA" },
   ];
 
   const enabledWorld = {
@@ -177,23 +190,38 @@ const DetailedCV = (props) => {
 
   const KeyValueList = ({ data }) => {
     return (
-      <div style={{ display: "flex" }}>
-        <div style={{ marginRight: "20px" }}>
-          {/* Render keys in the left column */}
-          {data.map(([key, _], index) => (
-            <div key={index} style={{ textAlign: "left" }}>
-              {key}:
+      <div
+      // style={{ display: "flex" }}
+      >
+        {detailsKeyValue.map((item, index) => {
+          return (
+            <div
+              key={index}
+              style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}
+            >
+              <p>{item.key}</p>
+              <p>{item.value}</p>
             </div>
-          ))}
+          );
+        })}
+
+        {/* <div style={{ display: "flex" }}>
+          <div style={{ marginRight: "20px" }}>
+            {data.map(([key, _], index) => (
+              <div key={index} style={{ textAlign: "left" }}>
+                {key}:
+              </div>
+            ))}
+          </div>
+          <div>
+            {data.map(([_, value], index) => (
+              <div key={index} style={{ textAlign: "left" }}>
+                {value}
+              </div>
+            ))}
+          </div>
         </div>
-        <div>
-          {/* Render values in the right column */}
-          {data.map(([_, value], index) => (
-            <div key={index} style={{ textAlign: "left" }}>
-              {value}
-            </div>
-          ))}
-        </div>
+         */}
       </div>
     );
   };
@@ -230,7 +258,17 @@ const DetailedCV = (props) => {
   };
 
   return (
-    <div>
+    <div
+    // className="container"
+    // style={{
+    //   position: "relative",
+    //   height:
+    //     screenWidth <= 1000
+    //       ? `${screenHeight - 25}px`
+    //       :
+    //         `${screenHeight - 180}px`,
+    // }}
+    >
       {/* {screenWidth<=550 && <Header
     test="test"/>} */}
       <div
@@ -238,11 +276,9 @@ const DetailedCV = (props) => {
         style={{
           position: "relative",
           height:
-            screenWidth <= 1000
-              ? `${screenHeight - 25}px`
-              : // "100vh"
-                `${screenHeight - 200}px`,
-          // borderLeft: screenWidth>1000 && '1px solid darkgrey'
+            screenWidth <= 550
+              ? `${screenHeight - 28}px`
+              : `${screenHeight - headsHeight - 28}px`,
         }}
         onScroll={handleScroll}
         ref={containerRef}
@@ -265,7 +301,7 @@ const DetailedCV = (props) => {
             title="Education"
             scrollToSection={() => scrollTo("education")}
           >
-            <div style={{ paddingLeft: "1rem" }}>
+            <div>
               <ul>
                 <li>
                   Master’s Degree (MSc) in Engineering (Civil) University of the
@@ -328,6 +364,16 @@ const DetailedCV = (props) => {
           onClick={scrollToTop}
         >
           Scroll to Top
+        </button>
+        <button
+          style={{
+            position: "sticky",
+            bottom: "0",
+            float: "right",
+            display: showButton ? {} : "none",
+          }}
+        >
+          TEST
         </button>
       </div>
       {screenWidth <= 550 && <Footer />}

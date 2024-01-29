@@ -264,9 +264,20 @@ const WeatherComponent = () => {
 
   return (
     <div ref={colRef}>
-      {locPermission && (
+      <div>
+        <h3>
+          Weather
+          <span
+            style={{ fontSize: "0.8rem", fontStyle: "normal", color: "gray" }}
+          >
+            {" "}
+            (api.openweathermap.org)
+          </span>
+        </h3>
+      </div>
+      {locPermission ? (
         <div>
-          <h3>Current Weather in {closestCity}</h3>
+          <p>Current Weather in {closestCity}</p>
           <p>Temperature: {temp}°C</p>
           <p>Humidity: {humidity}%</p>
           <div
@@ -290,7 +301,6 @@ const WeatherComponent = () => {
           <div
             style={{
               display: "grid",
-              // gridTemplateColumns:"repeat(5,1fr)"
               gridTemplateColumns: `repeat(5, ${colWidth}px)`,
               gridAutoColumns: `${colWidth}px`,
             }}
@@ -299,6 +309,11 @@ const WeatherComponent = () => {
               <div key={item.dateTime}>{formatData(item)}</div>
             ))}
           </div>
+        </div>
+      ) : (
+        <div>
+          if you don't see your weather here you may need to set location
+          permissions
         </div>
       )}
     </div>

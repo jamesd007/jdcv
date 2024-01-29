@@ -24,6 +24,11 @@ const Gallery = () => {
   const [zoomCountOut, setZoomCountOut] = useState(0);
   const [zoomFctr, setZoomFctr] = useState(1);
   const [dimensions, setDimensions] = useState({});
+  const dogsThumbnail = require("../images/dogs-thumbnail.jpg");
+  const dogsImage = require("../images/dogs.jpg");
+  const fruitclothThumbnail = require("../images/fruitcloth-thumbnail.jpg");
+  const fruitclothImage = require("../images/fruitcloth.jpg");
+  const [currentImage, setCurrentImage] = useState(null);
 
   const images = [
     dogs,
@@ -42,6 +47,10 @@ const Gallery = () => {
     strawberry,
     tulips,
     // Add more image URLs as needed
+  ];
+  const imagesNew = [
+    { thumbnailSrc: dogsThumbnail, highResSrc: dogsImage },
+    { thumbnailSrc: fruitclothThumbnail, highResSrc: fruitclothImage },
   ];
 
   const heightStyle = (h) => {
@@ -134,6 +143,11 @@ const Gallery = () => {
 
   const handleClose = () => {
     setSelectedImage(null);
+    setCurrentImage(null);
+  };
+
+  const handleThumbnailClick = (image) => {
+    setCurrentImage(image);
   };
 
   return (
@@ -141,7 +155,7 @@ const Gallery = () => {
       <h3>Image Gallery</h3>
       <p>some of my paintings</p>
       <div className="gallery">
-        {images.map((image, index) => {
+        {/* {images.map((image, index) => {
           return (
             <img
               key={index}
@@ -150,9 +164,18 @@ const Gallery = () => {
               onClick={() => openLightbox(image)}
             />
           );
-        })}
+        })} */}
+        <br />
+        {imagesNew.map((image, index) => (
+          <img
+            key={index}
+            src={image.thumbnailSrc} // Use thumbnail source initially
+            alt={`Thumbnail ${index}`}
+            onClick={() => handleThumbnailClick(image)}
+          />
+        ))}
       </div>
-      {selectedImage && (
+      {/* {selectedImage && (
         <div>
           <Modals
             // title="Image"
@@ -163,6 +186,25 @@ const Gallery = () => {
             footer={<></>}
           >
             <img style={picStyle} alt={"selected"} src={selectedImage} />
+          </Modals>
+        </div>
+      )} */}
+      {currentImage && (
+        <div>
+          <Modals
+            // title="Image"
+            unConventional="image"
+            onClose={() => handleClose()}
+            onClickOutside={() => handleClose()}
+            clickOutsideActive={true}
+            footer={<></>}
+          >
+            <img
+              style={picStyle}
+              src={selectedImage.highResSrc}
+              alt="High Resolution"
+            />
+            {/* <img style={picStyle} alt={"selected"} src={selectedImage} /> */}
           </Modals>
         </div>
       )}

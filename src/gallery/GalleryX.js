@@ -30,10 +30,10 @@ const images = [
     original: dogsImage,
     thumbnail: dogsThumbnail,
   },
-  {
-    original: "../images/dogs.jpg",
-    thumbnail: "../images/dogs.jpg",
-  },
+  // {
+  //   original: "../images/dogs.jpg",
+  //   thumbnail: "../images/dogs.jpg",
+  // },
   {
     original: "https://picsum.photos/id/1018/1000/400/",
     thumbnail: "https://picsum.photos/id/1018/250/150/",
