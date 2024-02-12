@@ -3,8 +3,8 @@ import Section from "./Section";
 import { Element, scroller } from "react-scroll";
 import Contents from "./Contents";
 import "./styles/DetailedCV.css";
+import "./styles/Main.css";
 import { Link } from "react-router-dom";
-import Header from "./Header";
 
 const DetailedCV = (props) => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -237,7 +237,7 @@ const DetailedCV = (props) => {
       <div
         ref={ftrRef}
         style={{
-          width: "100%",
+          width: "99%",
           maxWidth: `{screenWidth}px`,
           position: "sticky",
           bottom: "4px",

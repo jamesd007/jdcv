@@ -6,9 +6,12 @@ import {
   TransformComponent,
   useControls,
 } from "react-zoom-pan-pinch";
+import ArrowLeft from "../images/ArrowLeft";
+import ArrowRight from "../images/ArrowRight";
 
 const GalleryY = () => {
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [imagesData, setImagesData] = useState([]);
+  const [selectedImage, setSelectedImage] = useState({});
   const dogsThumbnail = require("../images/dogs-thumbnail.jpg");
   const dogsImage = require("../images/dogs.jpg");
   const fruitclothThumbnail = require("../images/fruitcloth-thumbnail.jpg");
@@ -51,26 +54,46 @@ const GalleryY = () => {
   const [zoomFctr, setZoomFctr] = useState(1);
   const [dimensions, setDimensions] = useState({});
 
-  const images = [
-    { thumbnailSrc: dogsThumbnail, highResSrc: dogsImage },
-    { thumbnailSrc: fruitclothThumbnail, highResSrc: fruitclothImage },
-    { thumbnailSrc: fruits1Thumbnail, highResSrc: fruits1Image },
-    { thumbnailSrc: fruits2Thumbnail, highResSrc: fruits2Image },
-    { thumbnailSrc: fruits3Thumbnail, highResSrc: fruits3Image },
-    { thumbnailSrc: fruits4Thumbnail, highResSrc: fruits4Image },
-    { thumbnailSrc: lemonsThumbnail, highResSrc: lemonsImage },
-    { thumbnailSrc: Mandela1Thumbnail, highResSrc: Mandela1Image },
-    { thumbnailSrc: Mandela2Thumbnail, highResSrc: Mandela2Image },
-    { thumbnailSrc: protea1Thumbnail, highResSrc: protea1Image },
-    { thumbnailSrc: protea2Thumbnail, highResSrc: protea2Image },
-    { thumbnailSrc: protea3Thumbnail, highResSrc: protea3Image },
-    { thumbnailSrc: protea4Thumbnail, highResSrc: protea4Image },
-    { thumbnailSrc: strawberryThumbnail, highResSrc: strawberryImage },
-    { thumbnailSrc: tulipsThumbnail, highResSrc: tulipsImage },
-    { thumbnailSrc: carousel1Thumbnail, highResSrc: carousel1Image },
-    { thumbnailSrc: muizThumbnail, highResSrc: muizImage },
-    { thumbnailSrc: smallfruitsThumbnail, highResSrc: smallfruitsImage },
-  ];
+  useEffect(() => {
+    // Preload high-resolution images
+    const preloadImages = async () => {
+      // const imagesData = [
+      const images = [
+        { thumbnailSrc: dogsThumbnail, highResSrc: dogsImage },
+        { thumbnailSrc: fruitclothThumbnail, highResSrc: fruitclothImage },
+        { thumbnailSrc: fruits1Thumbnail, highResSrc: fruits1Image },
+        { thumbnailSrc: fruits2Thumbnail, highResSrc: fruits2Image },
+        { thumbnailSrc: fruits3Thumbnail, highResSrc: fruits3Image },
+        { thumbnailSrc: fruits4Thumbnail, highResSrc: fruits4Image },
+        { thumbnailSrc: lemonsThumbnail, highResSrc: lemonsImage },
+        { thumbnailSrc: Mandela1Thumbnail, highResSrc: Mandela1Image },
+        { thumbnailSrc: Mandela2Thumbnail, highResSrc: Mandela2Image },
+        { thumbnailSrc: protea1Thumbnail, highResSrc: protea1Image },
+        { thumbnailSrc: protea2Thumbnail, highResSrc: protea2Image },
+        { thumbnailSrc: protea3Thumbnail, highResSrc: protea3Image },
+        { thumbnailSrc: protea4Thumbnail, highResSrc: protea4Image },
+        { thumbnailSrc: strawberryThumbnail, highResSrc: strawberryImage },
+        { thumbnailSrc: tulipsThumbnail, highResSrc: tulipsImage },
+        { thumbnailSrc: carousel1Thumbnail, highResSrc: carousel1Image },
+        { thumbnailSrc: muizThumbnail, highResSrc: muizImage },
+        { thumbnailSrc: smallfruitsThumbnail, highResSrc: smallfruitsImage },
+      ];
+      await Promise.all(
+        images.map(async (data) => {
+          const highResImage = new Image();
+          highResImage.src = data.highResSrc;
+          await new Promise((resolve) => {
+            highResImage.onload = resolve;
+            highResImage.onerror = resolve; // Handling errors if needed
+          });
+        })
+      );
+
+      setImagesData(images);
+    };
+
+    preloadImages();
+  }, []);
 
   const Controls = () => {
     const { zoomIn, zoomOut, resetTransform } = useControls();
@@ -89,12 +112,12 @@ const GalleryY = () => {
     );
   };
 
-  const handleThumbnailClick = (image) => {
-    setSelectedImage(image);
+  const handleThumbnailClick = (image, index) => {
+    setSelectedImage({ image: image, index: index });
   };
 
   const handleClose = () => {
-    setSelectedImage(null);
+    setSelectedImage({});
   };
 
   const heightStyle = (h) => {
@@ -163,9 +186,9 @@ const GalleryY = () => {
     return () => {
       window.removeEventListener("resize", handleImageSize);
     };
-  }, [dimensions, selectedImage?.highResSrc, zoomCountIn]);
+  }, [dimensions, selectedImage?.image?.highResSrc, zoomCountIn]);
 
-  useEffect(handleImageSize, [selectedImage?.highResSrc, dimensions]);
+  useEffect(handleImageSize, [selectedImage?.image?.highResSrc, dimensions]);
 
   useEffect(() => {
     let i = new Image();
@@ -175,25 +198,25 @@ const GalleryY = () => {
         hgt: i.height,
       });
     };
-    i.src = selectedImage?.highResSrc;
+    i.src = selectedImage?.image?.highResSrc;
     return () => {};
-  }, [selectedImage?.highResSrc]);
+  }, [selectedImage?.image?.highResSrc]);
 
   return (
     <div>
       <h3>Image Gallery</h3>
       <p>some of my paintings</p>
       <div className="gallery">
-        {images.map((image, index) => (
+        {imagesData.map((image, index) => (
           <img
             key={index}
             className="gallery_img"
             src={image.thumbnailSrc} // Use thumbnail source initially
             alt={`Thumbnail ${index}`}
-            onClick={() => handleThumbnailClick(image)}
+            onClick={() => handleThumbnailClick(image, index)}
           />
         ))}
-        {selectedImage && (
+        {selectedImage?.image && (
           <div>
             <TransformWrapper>
               <Modals
@@ -210,9 +233,79 @@ const GalleryY = () => {
                 <TransformComponent>
                   <img
                     style={picStyle}
-                    src={selectedImage.highResSrc}
+                    src={selectedImage?.image?.highResSrc}
                     alt="High Resolution"
                   />
+                  <ArrowLeft
+                    strokecolor="black"
+                    fillcolor="white"
+                    strokewidth="0.25"
+                    style={{ position: "absolute", left: "0", bottom: "0" }}
+                    onClick={() =>
+                      selectedImage.index > 0
+                        ? handleThumbnailClick(
+                            imagesData[selectedImage.index - 1],
+                            selectedImage.index - 1
+                          )
+                        : handleThumbnailClick(
+                            imagesData[imagesData.length - 1],
+                            imagesData.length - 1
+                          )
+                    }
+                  />
+                  <div
+                    style={{
+                      position: "absolute",
+                      left: "0",
+                      top: "50%",
+                      cursor: "pointer",
+                      zIndex: "9",
+                    }}
+                    onClick={() =>
+                      selectedImage.index > 0
+                        ? handleThumbnailClick(
+                            imagesData[selectedImage.index - 1],
+                            selectedImage.index - 1
+                          )
+                        : handleThumbnailClick(
+                            imagesData[imagesData.length - 1],
+                            imagesData.length - 1
+                          )
+                    }
+                  >
+                    <ArrowLeft
+                      strokecolor="#40408C"
+                      fillcolor="#DCDCFA"
+                      strokewidth="2.25"
+                      height="3em"
+                      width="3em"
+                    />
+                  </div>
+                  <div
+                    style={{
+                      position: "absolute",
+                      right: "0",
+                      top: "50%",
+                      cursor: "pointer",
+                      zIndex: "999",
+                    }}
+                    onClick={() =>
+                      selectedImage.index < imagesData.length - 1
+                        ? handleThumbnailClick(
+                            imagesData[selectedImage.index + 1],
+                            selectedImage.index + 1
+                          )
+                        : handleThumbnailClick(imagesData[0], 0)
+                    }
+                  >
+                    <ArrowRight
+                      strokecolor="#40408C"
+                      fillcolor="#DCDCFA"
+                      strokewidth="2"
+                      height="3em"
+                      width="3em"
+                    />
+                  </div>
                 </TransformComponent>
               </Modals>
             </TransformWrapper>

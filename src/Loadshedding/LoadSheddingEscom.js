@@ -110,13 +110,13 @@ const Loadshedding = () => {
   // }
   //   }, 300); // 300ms debounce delay
 
-  //   useEffect(() => {
-  //     if (suburbChanged && suburb.length > 2) {
-  //       // Add a minimum length check
-  //       setSuburbChanged(false);
-  //       debouncedFetchData(suburb); // Call the debounced function with the suburb
-  //     }
-  //   }, [suburbChanged, suburb]);
+  // useEffect(() => {
+  //   if (suburbChanged && suburb.length > 2) {
+  //     // Add a minimum length check
+  //     setSuburbChanged(false);
+  //     debouncedFetchData(suburb); // Call the debounced function with the suburb
+  //   }
+  // }, [suburbChanged, suburb]);
 
   // useEffect(() => {
   //   if (suburbChanged) {

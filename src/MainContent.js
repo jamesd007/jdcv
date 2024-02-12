@@ -4,9 +4,8 @@ import Summary from "./Summary";
 import DetailedCV from "./DetailedCV";
 import SkillsShow from "./SkillsShow";
 import JDPic from "./JDPic";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./styles/Main.css";
-// import Header from "./Header";
 import MoonRising from "./MoonRising";
 
 const MainContent = () => {
@@ -29,33 +28,13 @@ const MainContent = () => {
     };
   }, []);
 
-  //   import React, { useState, useEffect, useRef } from "react";
-  // import MoonRising from "./MoonRising";
-  // import JDPic from "./JDPic";
-
   const Header = (props) => {
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
     const [screenHeight, setScreenHeight] = useState(window.innerHeight);
-    // const headerContainerRef = useRef(null);
-
-    // useEffect(() => {
-    //   function handleResize() {
-    //     setScreenHeight(window.innerHeight);
-    //     setScreenWidth(window.innerWidth);
-    //   }
-    //   window.addEventListener("resize", handleResize);
-    //   return () => {
-    //     window.removeEventListener("resize", handleResize);
-    //   };
-    // }, []);
 
     useEffect(() => {
       if (headerContainerRef?.current)
         setHeadHgt(headerContainerRef?.current?.clientHeight);
-      console.log(headerContainerRef?.current?.clientHeight);
-      //   if (props.callback && typeof props.callback === "function")
-      //     props.callback(headerContainerRef?.current?.clientHeight);
-      // }
     }, [headerContainerRef?.current?.clientHeight]);
 
     return (

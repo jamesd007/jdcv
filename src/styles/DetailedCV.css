@@ -18,9 +18,9 @@ ul{
      position:relative;
 }
     
-    .cellContainer{
+.cellContainer{
      height:180px;
-    }
+}
     
     @keyframes skyLighter {
      0%{
