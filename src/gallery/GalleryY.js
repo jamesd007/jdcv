@@ -57,7 +57,6 @@ const GalleryY = () => {
   useEffect(() => {
     // Preload high-resolution images
     const preloadImages = async () => {
-      // const imagesData = [
       const images = [
         { thumbnailSrc: dogsThumbnail, highResSrc: dogsImage },
         { thumbnailSrc: fruitclothThumbnail, highResSrc: fruitclothImage },

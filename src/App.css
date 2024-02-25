@@ -45,20 +45,3 @@
     }
     }
     
-.remove {
-    /* transform: translateY(100%);  */
-    /* Move content down by 100% of its height */
-    opacity: 0; 
-    /* Fade out the content */
-    animation: removeFade 4s linear forwards;
-  }
-
-  @keyframes removeFade{
-    0% {
-    opacity: 1;
-    }
-    100% {
-        /* transform: translateY(-100%); */
-    opacity: 0;
-    }
-    }

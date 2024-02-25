@@ -48,22 +48,16 @@ const MainContent = () => {
         }}
       >
         <MoonRising />
-        {/* <JDPic/> */}
       </div>
     );
   };
 
-  // export default Header;
-
   const Footer = () => {
     return (
       <div
+        className="footerMenu"
         style={{
-          position: "sticky",
-          bottom: "4px",
-          width: "100%",
           maxWidth: `{screenWidth/2}px`,
-          backgroundColor: "lightsteelblue",
           gridColumn:
             screenWidth <= 550 ? {} : screenWidth <= 1000 ? "1 / 3" : "2",
         }}
@@ -122,9 +116,7 @@ const MainContent = () => {
         >
           <JDPic />
         </div>
-        <Header
-        // callback={(val) => setHeadHgt(val)}
-        />
+        <Header />
         <div
           style={{
             width: "100%",
@@ -143,7 +135,7 @@ const MainContent = () => {
             <DetailedCV headsHeight={headHgt} />
           </div>
         )}
-        {screenWidth > 1000 && <SkillsShow />}
+        {screenWidth > 1000 && <SkillsShow headsHeight={headHgt} />}
         {screenWidth <= 1000 && <Footer />}
       </div>
     </div>

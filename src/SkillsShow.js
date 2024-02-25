@@ -7,9 +7,12 @@ import Loadshedding from "./Loadshedding/Loadshedding";
 import LoadsheddingEscom from "./Loadshedding/LoadSheddingEscom";
 import GetQuotes from "./GetQuotes";
 
-const SkillsShow = () => {
+const SkillsShow = (props) => {
   const [screenHeight, setScreenHeight] = useState(window.innerHeight);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  const [headsHeight, setHeadsHeight] = useState(
+    props?.headsHeight ? props?.headsHeight : 200
+  );
 
   useEffect(() => {
     function handleResize() {
@@ -49,11 +52,19 @@ const SkillsShow = () => {
       className="container"
       style={{
         position: "relative",
+        // maxHeight: `${screenHeight - headsHeight - 45}px`,
         height:
-          screenWidth <= 1000
-            ? `${screenHeight - 25}px`
-            : `${screenHeight - 180}px`,
+          screenWidth <= 550
+            ? `${screenHeight - 45}px`
+            : `${screenHeight - 45}px`,
       }}
+      // style={{
+      //   position: "relative",
+      //   height:
+      //     screenWidth <= 1000
+      //       ? `${screenHeight - 55}px`
+      //       : `${screenHeight - 180}px`,
+      // }}
     >
       <div>
         <h2>Some things...</h2>

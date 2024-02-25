@@ -140,14 +140,6 @@ const WeatherComponent = () => {
       //conv date
       let timestamp = Number(tempFArr.dateTime);
       let dateAndTime = new Date(timestamp * 1000);
-      // let chkdate = new Intl.DateTimeFormat("en-US", {
-      //   year: "numeric",
-      //   month: "2-digit",
-      //   day: "2-digit",
-      // }).format(dateAndTime); // 01/11/2021
-      //  let chkDate2
-      //  let chkTime2
-      //init vals
       let currDate = null;
       let currTime = null;
       let currMaxTemp = null;

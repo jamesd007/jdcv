@@ -26,6 +26,7 @@ opacity: 0;
 
 const AnimatedDiv = styled.div`
   position: absolute;
+  overflow: hidden;
   top: ${(window.innerHeight * 67) / 100 - 100}px;
   width: 100px;
   ${({ param1, param2, delay }) => css`
@@ -59,7 +60,6 @@ const MoveTest = (props) => {
         className="ballContainer"
         style={{
           position: index === 0 ? "relative" : "absolute",
-          // width: "100px",
           left: `${x}px`,
           zIndex: `${index}`,
         }}
@@ -77,11 +77,6 @@ const MoveTest = (props) => {
         position: "relative",
         top: "0px",
         left: "-100px",
-        // top: "calc(67% - 100px)",
-        // width: "100px",
-        backgroundColor: "pink",
-        // height: "100px",
-        // maxHeight: `${window.innerHeight}px`,
       }}
     >
       {[...Array(ballCount)].map((_, index) => (
@@ -91,15 +86,7 @@ const MoveTest = (props) => {
             shgt={100}
             key={index}
             style={{
-              // position: "relative",
               zIndex: `${index}`,
-              backgroundColor: "yellow",
-              // backgroundColor: index > 0 && "transparent",
-              // top:
-              //   index > 0
-              //     ? `${-index * 100}px`
-              //     : `${screenHeight * (67 / 100) - 100}px`,
-              // width: index > 0 && "100px",
               height: index > 0 && "100px",
               borderRadius: "50%",
             }}
@@ -120,7 +107,6 @@ const MoveTest = (props) => {
           </AnimatedDiv>
         </StyleSheetManager>
       ))}
-      {/* {grow && lastLightPosition.x !== 0 && props.callback(lastLightPosition)} */}
     </div>
   );
 };

@@ -50,7 +50,7 @@ const MoonRising = () => {
 
   const moonOverlayStyle = {
     position: "absolute",
-    top: "-70%",
+    top: "-90%",
     right: "12%",
     width: "100px",
     height: "100px",
@@ -97,7 +97,7 @@ const MoonRising = () => {
       <div
         style={{
           position: "absolute",
-          left: screenWidth < 550 ? "9rem" : screenWidth <= 1000 ? "9rem" : "0",
+          left: screenWidth <= 1000 ? "6rem" : "0",
           bottom: "0.2rem",
           fontSize: screenWidth <= 1000 ? "1.8rem" : "1.8rem",
           fontWeight: "bold",
@@ -198,7 +198,7 @@ const MoonRising = () => {
         <img
           style={{
             position: "absolute",
-            top: "-70%",
+            top: "-90%",
             right: "12%",
             opacity: "1",
             height: "100px",

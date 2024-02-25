@@ -190,9 +190,7 @@ const DetailedCV = (props) => {
 
   const KeyValueList = ({ data }) => {
     return (
-      <div
-      // style={{ display: "flex" }}
-      >
+      <div>
         {detailsKeyValue.map((item, index) => {
           return (
             <div
@@ -204,24 +202,6 @@ const DetailedCV = (props) => {
             </div>
           );
         })}
-
-        {/* <div style={{ display: "flex" }}>
-          <div style={{ marginRight: "20px" }}>
-            {data.map(([key, _], index) => (
-              <div key={index} style={{ textAlign: "left" }}>
-                {key}:
-              </div>
-            ))}
-          </div>
-          <div>
-            {data.map(([_, value], index) => (
-              <div key={index} style={{ textAlign: "left" }}>
-                {value}
-              </div>
-            ))}
-          </div>
-        </div>
-         */}
       </div>
     );
   };
@@ -236,13 +216,10 @@ const DetailedCV = (props) => {
     return (
       <div
         ref={ftrRef}
+        className="footerMenu"
         style={{
-          width: "99%",
           maxWidth: `{screenWidth}px`,
-          position: "sticky",
-          bottom: "4px",
           left: "0px",
-          backgroundColor: "lightsteelblue",
         }}
       >
         <Link to="/" className="footerLink">
@@ -257,20 +234,13 @@ const DetailedCV = (props) => {
     );
   };
 
+  useEffect(() => {
+    console.log("tedtestG screenHeight=", screenHeight);
+    console.log("tedtestG headsHeight=", headsHeight);
+  }, [screenHeight, headsHeight]);
+
   return (
-    <div
-    // className="container"
-    // style={{
-    //   position: "relative",
-    //   height:
-    //     screenWidth <= 1000
-    //       ? `${screenHeight - 25}px`
-    //       :
-    //         `${screenHeight - 180}px`,
-    // }}
-    >
-      {/* {screenWidth<=550 && <Header
-    test="test"/>} */}
+    <div>
       <div
         className="container"
         style={{
@@ -281,6 +251,21 @@ const DetailedCV = (props) => {
               ? `${screenHeight - 45}px`
               : `${screenHeight - headsHeight - 45}px`,
         }}
+        // style={{
+        //   position: "relative",
+        //   height:
+        //     screenWidth <= 1000
+        //       ? `${screenHeight - 45}px`
+        //       : `${screenHeight - 180}px`,
+        // }}
+        // style={{
+        //   position: "relative",
+        //   maxHeight: `${screenHeight - headsHeight - 45}px`,
+        //   height:
+        //     screenWidth <= 550
+        //       ? `${screenHeight - 45}px`
+        //       : `${screenHeight - headsHeight - 45}px`,
+        // }}
         onScroll={handleScroll}
         ref={containerRef}
       >
@@ -365,16 +350,6 @@ const DetailedCV = (props) => {
           onClick={scrollToTop}
         >
           Scroll to Top
-        </button>
-        <button
-          style={{
-            position: "sticky",
-            bottom: "0",
-            float: "right",
-            display: showButton ? {} : "none",
-          }}
-        >
-          TEST
         </button>
       </div>
       {screenWidth <= 550 && <Footer />}

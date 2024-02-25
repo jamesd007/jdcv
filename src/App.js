@@ -49,13 +49,10 @@ function App() {
       style={{
         width: `${screenWidth}px`,
         maxWidth: `${screenWidth}px`,
-        // overflow: "hidden",
+        overflow: "hidden",
       }}
     >
-      <div
-        className={splashed ? "scroll-out" : "blackBackground"}
-        // style={{ overflow: "hidden" }}
-      >
+      <div className={splashed ? "scroll-out" : "blackBackground"}>
         {(!audioStarted || !audioLoaded) && (
           <button className="actionButton" onClick={() => startAudio()}>
             <p
@@ -80,11 +77,7 @@ function App() {
         )}
         {audioStarted && (
           <div>
-            <audio
-              src="/JB.mp3"
-              autoPlay
-              // onEnded={handleAudioEnded}
-            />
+            <audio src="/JB.mp3" autoPlay />
             <MoveTest callback={(val) => setPosition(val)} />
             {position.x !== 0 && (
               <BigLight callback={(val) => handleCallback(val)} />

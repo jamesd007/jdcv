@@ -16,3 +16,11 @@
   left: 0px;
   background-color:lightsteelblue;
 }
+
+.footerMenu{
+  position: sticky;
+  bottom: 4px;
+  width: 99%;
+  background-color: lightsteelblue;
+  margin-top:0.5rem;
+}

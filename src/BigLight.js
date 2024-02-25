@@ -79,15 +79,6 @@ const StyledSubDiv = styled.div`
   transform-origin: center; /* Set the origin to the center */
 `;
 
-// const fadeOut = keyframes`
-// 0% {
-// opacity: 1;
-// }
-// 100% {
-// opacity: 0;
-// }
-// `;
-
 const BigLight = (props) => {
   const [showTitle, setShowTitle] = useState(false);
   const [showSubTitle, setShowSubTitle] = useState(false);

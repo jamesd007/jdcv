@@ -57,8 +57,9 @@ const Summary = (props) => {
     };
 
     useEffect(() => {
-      // Scroll to the bottom when the component mounts or whenever data changes
-      containerRef.current.scrollTop = containerRef.current.scrollHeight;
+      if (isExpanded)
+        // Scroll to the bottom when the component mounts or whenever data changes
+        containerRef.current.scrollTop = containerRef.current.scrollHeight;
     }, [isExpanded]);
 
     useEffect(() => {
@@ -117,15 +118,7 @@ const Summary = (props) => {
           screenWidth <= 550
             ? `${screenHeight - 45}px`
             : `${screenHeight - headsHeight - 45}px`,
-        //   screenWidth <= 1000
-        //     ? `${screenHeight - 25}px`
-        //     : `${screenHeight - headsHeight - 25}px`,
-        // // `${screenHeight - 180}px`,
-        // borderLeft: screenWidth>1000 && '1px solid darkgrey'
       }}
-      // style={{
-      //   height: `${screenHeight - 25}px`,
-      // }}
     >
       <h3>About Me</h3>
       <div style={{ fontSize: "1rem" }}>
