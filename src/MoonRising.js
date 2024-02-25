@@ -1,7 +1,7 @@
-import React,{useState,useEffect} from 'react';
-import moon from "./images/moon.png"
-import bluetrees from "./images/bluetrees.png"
-import "./styles/MoonRising.css"
+import React, { useState, useEffect } from "react";
+import moon from "./images/moon.png";
+import bluetrees from "./images/bluetrees.png";
+import "./styles/MoonRising.css";
 
 const MoonRising = () => {
   const [screenHeight, setScreenHeight] = useState(window.innerHeight);
@@ -27,14 +27,14 @@ const MoonRising = () => {
   //   backgroundColor:"#1f26c8"
   // };
   const skyStyle = {
-    position: 'absolute',
-    top: '0px',
-    left: '0px',
+    position: "absolute",
+    top: "0px",
+    left: "0px",
     height: `${screenHeight * 0.2 * 0.5}px`,
-    width: '100%',
-    backgroundColor: '#464efe', 
-    overflow: 'hidden',
-    animation: 'skyTransition 45s linear', // Use a longer duration for a slower transition
+    width: "100%",
+    backgroundColor: "#464efe",
+    overflow: "hidden",
+    animation: "skyTransition 45s linear", // Use a longer duration for a slower transition
   };
   // const skyStyle = {
   //   position: 'absolute',
@@ -45,19 +45,19 @@ const MoonRising = () => {
   //   // border:"1px solid black",
   //   overflow:"hidden",
   //   // backgroundColor:"#000000",
-  //   animation: 'skyOverlayChange 45s linear', 
+  //   animation: 'skyOverlayChange 45s linear',
   // };
 
   const moonOverlayStyle = {
-    position: 'absolute',
-    top: '-70%', 
-    right: '12%',
-    width: '100px', 
-    height: '100px',
-    backgroundColor: 'rgba(255, 255, 255, 0)', 
-    borderRadius: '50%',
-    zIndex: 5, 
-    animation: 'moonOverlayChange 45s linear', 
+    position: "absolute",
+    top: "-70%",
+    right: "12%",
+    width: "100px",
+    height: "100px",
+    backgroundColor: "rgba(255, 255, 255, 0)",
+    borderRadius: "50%",
+    zIndex: 5,
+    animation: "moonOverlayChange 45s linear",
   };
 
   // const treeStyle = {
@@ -74,57 +74,54 @@ const MoonRising = () => {
 
   // const moonStyle = {
   //   position: 'absolute',
-  //   top: '-130%', 
+  //   top: '-130%',
   //   right: '12%',
   //   width: '100px',
   //   height: '100px',
-  //   backgroundImage: `url(${moon})`, 
+  //   backgroundImage: `url(${moon})`,
   //   backgroundSize: 'cover',
-  //   animation: 'moonRising 10s linear ', 
+  //   animation: 'moonRising 10s linear ',
   //   zIndex: 5,
   // };
 
   return (
-    <div 
-    style={{
-      position: 'relative',
-      border:"1px solid black",
-      overflow:"hidden",
-      width: '100%',
-      height: `${screenHeight*0.2}px`,
-    }}
+    <div
+      style={{
+        position: "relative",
+        border: "1px solid black",
+        overflow: "hidden",
+        width: "100%",
+        height: `${screenHeight * 0.2}px`,
+      }}
     >
       <div
         style={{
-          position:"absolute",
-          left: screenWidth<550 
-            ? "9rem" 
-            : screenWidth<=1000
-              ? "9rem"
-              : "0",
-          bottom:"0.2rem",
-          fontSize:screenWidth<=1000
-          ? "1.8rem"
-          : "1.8rem",
-          fontWeight:"bold",
-          marginLeft:"1rem",
-          zIndex: screenWidth<550 ? "99":"9",
-          color: screenWidth<550 
-            ? "darkkhaki"
-            : screenWidth<=1000
+          position: "absolute",
+          left: screenWidth < 550 ? "9rem" : screenWidth <= 1000 ? "9rem" : "0",
+          bottom: "0.2rem",
+          fontSize: screenWidth <= 1000 ? "1.8rem" : "1.8rem",
+          fontWeight: "bold",
+          marginLeft: "1rem",
+          zIndex: screenWidth < 550 ? "99" : "9",
+          color:
+            screenWidth < 550
               ? "darkkhaki"
-              : "lightsteelblue"}}>
-        <p style={{margin:"0"}}>James Doyle</p>
-        <p style={{fontSize:screenWidth<=1000
-            ? "1.2rem"
-            : "1.4rem",
-            margin:"0"}}>
-            Curriculum Vitae
+              : screenWidth <= 1000
+              ? "darkkhaki"
+              : "lightsteelblue",
+        }}
+      >
+        <p style={{ margin: "0" }}>James Doyle</p>
+        <p
+          style={{
+            fontSize: screenWidth <= 1000 ? "1.2rem" : "1.4rem",
+            margin: "0",
+          }}
+        >
+          Curriculum Vitae
         </p>
       </div>
-       <div 
-         style={skyStyle}>
-      </div>
+      <div style={skyStyle}></div>
       {/* <div //sky
         style={{
           position:"absolute",
@@ -137,32 +134,32 @@ const MoonRising = () => {
           // animation:'lighten 45s linear '
         }}>
       </div> */}
-      
+
       <div //ground
         style={{
-          position:"absolute",
-          top:`${screenHeight*0.2*0.5}px`,
-          left:"0",
-          width:"100%",
-          height:`${screenHeight*0.2*0.5}px`,
-          backgroundColor:"#1f26c8",
-          zIndex:"7"
-        }}>
-      </div>
-      <div  //trees
+          position: "absolute",
+          top: `${screenHeight * 0.2 * 0.5}px`,
+          left: "0",
+          width: "100%",
+          height: `${screenHeight * 0.2 * 0.5}px`,
+          backgroundColor: "#1f26c8",
+          zIndex: "7",
+        }}
+      ></div>
+      <div //trees
       >
         <img
           style={{
-            position:"absolute",
-            top:"0",
-            left:"0",
-            height:"100%",
-            width:"100%",
-            zIndex:"9",
+            position: "absolute",
+            top: "0",
+            left: "0",
+            height: "100%",
+            width: "100%",
+            zIndex: "9",
           }}
           src={bluetrees}
-          alt="trees">
-        </img>
+          alt="trees"
+        ></img>
       </div>
       {/* <div //road
         >
@@ -197,25 +194,23 @@ const MoonRising = () => {
         </img>
       </div> */}
       <div //moon
-        >
+      >
         <img
           style={{
-            position:"absolute",
-            top: '-70%', 
-            right: '12%',
-            opacity:"1",
-            height:"100px",
-            width:"100px",
-            zIndex:"4",
-            animation: 'moonRising 45s linear ', // Customize the animation properties
+            position: "absolute",
+            top: "-70%",
+            right: "12%",
+            opacity: "1",
+            height: "100px",
+            width: "100px",
+            zIndex: "4",
+            animation: "moonRising 45s linear ", // Customize the animation properties
           }}
           src={moon}
-          alt="moon">
-        </img>
+          alt="moon"
+        ></img>
       </div>
-      <div 
-         style={moonOverlayStyle}>
-      </div>
+      <div style={moonOverlayStyle}></div>
     </div>
   );
 };

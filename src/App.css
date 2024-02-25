@@ -1,0 +1,64 @@
+:root{
+    --background-color:#115eFF;
+    }
+    
+    .blackBackground{
+    height:100vh;
+    width:100vw;
+    background-color: var(--background-color);
+    position: relative;
+    }
+    
+    .ballContainer {
+    position: absolute; 
+    height:100px;
+    width:100px;
+    top:calc(67% - 100px);
+    left:calc(16% - 100px);
+    }
+
+    .actionButton{
+        position: absolute;
+        z-index: 99;
+        width: 10rem;
+        height: 10rem;
+        border-radius: 50%;
+        font-size: 3rem;
+        box-shadow: 4px 0px 40px black;
+        border: solid 4px darkblue;
+        margin-left: 50%;
+        top: 25%;
+        transform: translateX(-50%);
+        background: linear-gradient(red,rgba(255, 255, 55, 1));
+    }
+    
+    .scroll-out {
+    animation: moveFade 10s linear forwards;
+    }
+    
+    @keyframes moveFade{
+    0% {
+    opacity: 1;
+    }
+    100% {
+    opacity: 0;
+    }
+    }
+    
+.remove {
+    /* transform: translateY(100%);  */
+    /* Move content down by 100% of its height */
+    opacity: 0; 
+    /* Fade out the content */
+    animation: removeFade 4s linear forwards;
+  }
+
+  @keyframes removeFade{
+    0% {
+    opacity: 1;
+    }
+    100% {
+        /* transform: translateY(-100%); */
+    opacity: 0;
+    }
+    }

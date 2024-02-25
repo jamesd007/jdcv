@@ -30,7 +30,6 @@ const MainContent = () => {
 
   const Header = (props) => {
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-    const [screenHeight, setScreenHeight] = useState(window.innerHeight);
 
     useEffect(() => {
       if (headerContainerRef?.current)
@@ -92,7 +91,7 @@ const MainContent = () => {
     >
       <div
         style={{
-          width: "100%",
+          width: "90%",
           padding: "0 5px 0 5px",
           maxWidth: `${maxCol1Size + maxCol2Size + maxCol3Size}px`,
           display: screenWidth <= 550 ? "" : "grid",

@@ -112,10 +112,11 @@ const Summary = (props) => {
       className="container"
       style={{
         position: "relative",
+        maxHeight: `${screenHeight - headsHeight - 45}px`,
         height:
           screenWidth <= 550
-            ? `${screenHeight - 28}px`
-            : `${screenHeight - headsHeight - 28}px`,
+            ? `${screenHeight - 45}px`
+            : `${screenHeight - headsHeight - 45}px`,
         //   screenWidth <= 1000
         //     ? `${screenHeight - 25}px`
         //     : `${screenHeight - headsHeight - 25}px`,
