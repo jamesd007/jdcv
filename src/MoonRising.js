@@ -102,9 +102,9 @@ const MoonRising = () => {
           fontSize: screenWidth <= 1000 ? "1.8rem" : "1.8rem",
           fontWeight: "bold",
           marginLeft: "1rem",
-          zIndex: screenWidth < 550 ? "99" : "9",
+          zIndex: screenWidth < 768 ? "99" : "9",
           color:
-            screenWidth < 550
+            screenWidth < 768
               ? "darkkhaki"
               : screenWidth <= 1000
               ? "darkkhaki"

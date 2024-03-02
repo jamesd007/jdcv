@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Modals from "../Modals";
 import "../styles/Gallery.css";
 import {
@@ -9,7 +9,7 @@ import {
 import ArrowLeft from "../images/ArrowLeft";
 import ArrowRight from "../images/ArrowRight";
 
-const GalleryY = () => {
+const GalleryY = ({ onResize }) => {
   const [imagesData, setImagesData] = useState([]);
   const [selectedImage, setSelectedImage] = useState({});
   const dogsThumbnail = require("../images/dogs-thumbnail.jpg");
@@ -53,6 +53,7 @@ const GalleryY = () => {
   const [zoomCountOut, setZoomCountOut] = useState(0);
   const [zoomFctr, setZoomFctr] = useState(1);
   const [dimensions, setDimensions] = useState({});
+  const colRef = useRef(null);
 
   useEffect(() => {
     // Preload high-resolution images
@@ -201,8 +202,28 @@ const GalleryY = () => {
     return () => {};
   }, [selectedImage?.image?.highResSrc]);
 
+  useEffect(() => {
+    const container = colRef.current;
+    if (container) {
+      const observer = new ResizeObserver(() => {
+        // Notify parent component about the change in size
+        // Assuming onResize is a prop passed from the parent
+        // You need to define onResize in YourComponent
+        if (onResize) {
+          onResize();
+        }
+      });
+
+      observer.observe(container);
+
+      return () => {
+        observer.unobserve(container);
+      };
+    }
+  }, []);
+
   return (
-    <div>
+    <div ref={colRef}>
       <h3>Image Gallery</h3>
       <p>some of my paintings</p>
       <div className="gallery">

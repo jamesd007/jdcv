@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import GetCurrentLoc from "./Weather/GetCurrentLoc";
 import { Link } from "react-router-dom";
 import "./styles/Main.css";
@@ -6,6 +6,7 @@ import GalleryY from "./gallery/GalleryY";
 import Loadshedding from "./Loadshedding/Loadshedding";
 import LoadsheddingEscom from "./Loadshedding/LoadSheddingEscom";
 import GetQuotes from "./GetQuotes";
+import { head } from "lodash";
 
 const SkillsShow = (props) => {
   const [screenHeight, setScreenHeight] = useState(window.innerHeight);
@@ -13,17 +14,18 @@ const SkillsShow = (props) => {
   const [headsHeight, setHeadsHeight] = useState(
     props?.headsHeight ? props?.headsHeight : 200
   );
-
-  useEffect(() => {
-    function handleResize() {
-      setScreenHeight(window.innerHeight);
-      setScreenWidth(window.innerWidth);
-    }
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+  console.log("tedtestPP props=", props);
+  const [containerHeight, setContainerHeight] = useState("auto");
+  // useEffect(() => {
+  //   function handleResize() {
+  //     setScreenHeight(window.innerHeight);
+  //     setScreenWidth(window.innerWidth);
+  //   }
+  //   window.addEventListener("resize", handleResize);
+  //   return () => {
+  //     window.removeEventListener("resize", handleResize);
+  //   };
+  // }, []);
 
   const Footer = () => {
     return (
@@ -38,7 +40,7 @@ const SkillsShow = (props) => {
         <Link to="/" className="footerLink">
           /Home
         </Link>
-        {screenWidth <= 550 && (
+        {screenWidth <= 768 && (
           <Link to="/detailedcv" className="footerLink">
             Detailed CV
           </Link>
@@ -46,17 +48,41 @@ const SkillsShow = (props) => {
       </div>
     );
   };
+  const updateContainerHeight = () => {
+    const container = document.querySelector(".container");
+    if (container) {
+      let newHeight;
+      if (screenWidth <= 768) newHeight = screenHeight - 45;
+      else newHeight = screenHeight - headsHeight - 45;
+      setContainerHeight(`${newHeight}px`);
+    }
+  };
+  useEffect(() => {
+    updateContainerHeight();
+  }, [screenWidth, screenHeight, headsHeight]);
+
+  const handleResize = () => {
+    // Update container height when child components resize
+    updateContainerHeight();
+  };
+
+  useEffect(() => {
+    console.log("tedtestG SS screenHeight=", screenHeight);
+    console.log("tedtestG SS headsHeight=", headsHeight);
+    console.log("tedtestG SS screenwidth=", screenWidth);
+    console.log("tedtestGG containerHeight=", containerHeight);
+  }, [screenHeight, headsHeight, screenWidth, containerHeight]);
 
   return (
     <div
       className="container"
       style={{
         position: "relative",
-        // maxHeight: `${screenHeight - headsHeight - 45}px`,
+        maxHeight: `${screenHeight - 45}px`,
         height:
-          screenWidth <= 550
+          screenWidth <= 768
             ? `${screenHeight - 45}px`
-            : `${screenHeight - 45}px`,
+            : `${screenHeight - headsHeight - 45}px`,
       }}
       // style={{
       //   position: "relative",
@@ -68,7 +94,7 @@ const SkillsShow = (props) => {
     >
       <div>
         <h2>Some things...</h2>
-        <GetCurrentLoc />
+        <GetCurrentLoc onResize={handleResize} />
       </div>
       {/* <div>
         Today's headlines
@@ -80,7 +106,7 @@ const SkillsShow = (props) => {
         <Loadshedding />
       </div> */}
       <div>
-        <GalleryY />
+        <GalleryY onResize={handleResize} />
       </div>
       <div>
         <GetQuotes />

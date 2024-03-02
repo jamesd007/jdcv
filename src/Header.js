@@ -33,7 +33,7 @@
 //         height: "fit-content",
 //         fontSize: "3rem",
 //         gridColumn:
-//           screenWidth <= 550 ? {} : screenWidth <= 1000 ? "1 / 3" : "2",
+//           screenWidth <= 768 ? {} : screenWidth <= 1000 ? "1 / 3" : "2",
 //       }}
 //     >
 //       <MoonRising />

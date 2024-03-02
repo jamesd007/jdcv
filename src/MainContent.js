@@ -44,7 +44,7 @@ const MainContent = () => {
           height: "fit-content",
           fontSize: "3rem",
           gridColumn:
-            screenWidth <= 550 ? {} : screenWidth <= 1000 ? "1 / 3" : "2",
+            screenWidth <= 768 ? {} : screenWidth <= 1000 ? "1 / 3" : "2",
         }}
       >
         <MoonRising />
@@ -59,10 +59,10 @@ const MainContent = () => {
         style={{
           maxWidth: `{screenWidth/2}px`,
           gridColumn:
-            screenWidth <= 550 ? {} : screenWidth <= 1000 ? "1 / 3" : "2",
+            screenWidth <= 768 ? {} : screenWidth <= 1000 ? "1 / 3" : "2",
         }}
       >
-        {screenWidth <= 550 && (
+        {screenWidth <= 768 && (
           <Link to="/detailedcv" className="footerLink">
             Detailed CV
           </Link>
@@ -73,6 +73,12 @@ const MainContent = () => {
       </div>
     );
   };
+
+  useEffect(() => {
+    console.log("tedtestG app screenHeight=", screenHeight);
+    console.log("tedtestG app headHgt=", headHgt);
+    console.log("tedtestG app screenwidth=", screenWidth);
+  }, [screenHeight, headHgt, screenWidth]);
 
   return (
     <div
@@ -88,9 +94,9 @@ const MainContent = () => {
           width: "90%",
           padding: "0 5px 0 5px",
           maxWidth: `${maxCol1Size + maxCol2Size + maxCol3Size}px`,
-          display: screenWidth <= 550 ? "" : "grid",
+          display: screenWidth <= 768 ? "" : "grid",
           gridTemplateColumns:
-            screenWidth <= 550
+            screenWidth <= 768
               ? {}
               : screenWidth <= 1000
               ? screenWidth <= 800
@@ -105,13 +111,13 @@ const MainContent = () => {
           style={{
             position: screenWidth <= 1000 ? "absolute" : "relative",
             left:
-              screenWidth <= 550 ? "10px" : screenWidth <= 1000 ? "18px'" : {},
+              screenWidth <= 768 ? "10px" : screenWidth <= 1000 ? "18px'" : {},
             zIndex: "10",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             gridColumn:
-              screenWidth <= 550 ? {} : screenWidth <= 1000 ? "1" : "1",
+              screenWidth <= 768 ? {} : screenWidth <= 1000 ? "1" : "1",
           }}
         >
           <JDPic />
@@ -120,16 +126,16 @@ const MainContent = () => {
         <div
           style={{
             width: "100%",
-            gridColumn: screenWidth <= 550 ? {} : "1",
+            gridColumn: screenWidth <= 768 ? {} : "1",
           }}
         >
           <Summary headsHeight={headHgt} />
         </div>
-        {screenWidth > 550 && (
+        {screenWidth > 768 && (
           <div
             style={{
               width: "100%",
-              gridColumn: screenWidth <= 550 ? {} : "2",
+              gridColumn: screenWidth <= 768 ? {} : "2",
             }}
           >
             <DetailedCV headsHeight={headHgt} />

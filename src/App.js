@@ -12,6 +12,7 @@ function App() {
   const [audioLoaded, setAudioLoaded] = useState(false);
   const [audioStarted, setAudioStarted] = useState(false);
   const [splashed, setSplashed] = useState(false);
+  const [showIntro, setShowIntro] = useState(true);
 
   useEffect(() => {
     // Preload the audio file
@@ -44,6 +45,12 @@ function App() {
     }, 2000);
   };
 
+  const handleSkipIntro = () => {
+    console.log("tedtestAAA skipping intro");
+    setShowIntro(false);
+    setSplashed(true);
+  };
+
   return (
     <div
       style={{
@@ -53,29 +60,38 @@ function App() {
       }}
     >
       <div className={splashed ? "scroll-out" : "blackBackground"}>
+        <button
+          style={{ position: "absolute", right: "20px", bottom: "20px" }}
+          onClick={handleSkipIntro}
+        >
+          Skip Intro
+        </button>
         {(!audioStarted || !audioLoaded) && (
-          <button className="actionButton" onClick={() => startAudio()}>
-            <p
-              style={{
-                fontSize: "1rem",
-                color: "white",
-                margin: "0",
-              }}
-            >
-              Press for{" "}
-            </p>
-            <p
-              style={{
-                margin: "0",
-                fontSize: "2rem",
-                fontWeight: "bold",
-              }}
-            >
-              Action
-            </p>
-          </button>
+          <div>
+            <button className="actionButton" onClick={() => startAudio()}>
+              <p
+                style={{
+                  fontSize: "1rem",
+                  color: "white",
+                  margin: "0",
+                }}
+              >
+                Press for{" "}
+              </p>
+              <p
+                style={{
+                  margin: "0",
+                  fontSize: "2rem",
+                  fontWeight: "bold",
+                }}
+              >
+                Action
+              </p>
+            </button>
+          </div>
         )}
-        {audioStarted && (
+
+        {audioStarted && showIntro && (
           <div>
             <audio src="/JB.mp3" autoPlay />
             <MoveTest callback={(val) => setPosition(val)} />
@@ -89,25 +105,29 @@ function App() {
         <div
           style={{ width: `${screenWidth}px`, maxWidth: `${screenWidth}px` }}
         >
-          <BrowserRouter>
-            <div>
-              {screenWidth <= 550 ? (
-                <Routes>
-                  <Route path="/detailedcv" element={<DetailedCV />} />
-                  <Route path="/skillsshow" element={<SkillsShow />} />
-                  <Route exact path="/" element={<MainContent />} />
-                </Routes>
-              ) : screenWidth <= 1000 ? (
-                <Routes>
-                  <Route path="/detailedcv" element={<DetailedCV />} />
-                  <Route path="/skillsshow" element={<SkillsShow />} />
-                  <Route exact path="/" element={<MainContent />} />
-                </Routes>
-              ) : (
-                <MainContent />
-              )}
-            </div>
-          </BrowserRouter>
+          {screenWidth > 768 ? (
+            <BrowserRouter>
+              <div>
+                {screenWidth <= 768 ? (
+                  <Routes>
+                    <Route path="/detailedcv" element={<DetailedCV />} />
+                    <Route path="/skillsshow" element={<SkillsShow />} />
+                    <Route exact path="/" element={<MainContent />} />
+                  </Routes>
+                ) : screenWidth <= 1000 ? (
+                  <Routes>
+                    <Route path="/detailedcv" element={<DetailedCV />} />
+                    <Route path="/skillsshow" element={<SkillsShow />} />
+                    <Route exact path="/" element={<MainContent />} />
+                  </Routes>
+                ) : (
+                  <MainContent />
+                )}
+              </div>
+            </BrowserRouter>
+          ) : (
+            {}
+          )}
         </div>
       )}
     </div>

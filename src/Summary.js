@@ -115,7 +115,7 @@ const Summary = (props) => {
         position: "relative",
         maxHeight: `${screenHeight - headsHeight - 45}px`,
         height:
-          screenWidth <= 550
+          screenWidth <= 768
             ? `${screenHeight - 45}px`
             : `${screenHeight - headsHeight - 45}px`,
       }}

@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import "../styles/GetCurrentLoc.css";
 
-const WeatherComponent = () => {
+const WeatherComponent = ({ onResize }) => {
   const [closestCity, setClosestCity] = useState("");
   const [cityId, setCityId] = useState(null);
   const [lat, setLat] = useState(null);
@@ -253,6 +253,30 @@ const WeatherComponent = () => {
       else setColWidth(colRef?.current?.clientWidth / 5);
     }
   }, [colRef?.current?.clientWidth]);
+
+  useEffect(() => {
+    const container = colRef.current;
+    if (container) {
+      const observer = new ResizeObserver(() => {
+        if (onResize) {
+          onResize();
+        }
+      });
+
+      observer.observe(container);
+
+      return () => {
+        observer.unobserve(container);
+      };
+    }
+  }, []);
+
+  useEffect(() => {
+    console.log(
+      "tedtestGG colRef?.current?.clientHeight=",
+      colRef?.current?.clientHeight
+    );
+  }, [colRef?.current?.clientHeight]);
 
   return (
     <div ref={colRef}>

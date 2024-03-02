@@ -177,16 +177,16 @@ const DetailedCV = (props) => {
     });
   };
 
-  useEffect(() => {
-    function handleResize() {
-      setScreenHeight(window.innerHeight);
-      setScreenWidth(window.innerWidth);
-    }
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+  // useEffect(() => {
+  //   function handleResize() {
+  //     setScreenHeight(window.innerHeight);
+  //     setScreenWidth(window.innerWidth);
+  //   }
+  //   window.addEventListener("resize", handleResize);
+  //   return () => {
+  //     window.removeEventListener("resize", handleResize);
+  //   };
+  // }, []);
 
   const KeyValueList = ({ data }) => {
     return (
@@ -225,7 +225,7 @@ const DetailedCV = (props) => {
         <Link to="/" className="footerLink">
           /Home
         </Link>
-        {screenWidth <= 550 && (
+        {screenWidth <= 768 && (
           <Link to="/skillsshow" className="footerLink">
             Some other things
           </Link>
@@ -235,9 +235,10 @@ const DetailedCV = (props) => {
   };
 
   useEffect(() => {
-    console.log("tedtestG screenHeight=", screenHeight);
-    console.log("tedtestG headsHeight=", headsHeight);
-  }, [screenHeight, headsHeight]);
+    console.log("tedtestDCG screenHeight=", screenHeight);
+    console.log("tedtestDCG headsHeight=", headsHeight);
+    console.log("tedtestDCG screenwidth=", screenWidth);
+  }, [screenHeight, headsHeight, screenWidth]);
 
   return (
     <div>
@@ -245,9 +246,9 @@ const DetailedCV = (props) => {
         className="container"
         style={{
           position: "relative",
-          maxHeight: `${screenHeight - headsHeight - 45}px`,
+          maxHeight: `${screenHeight - 45}px`,
           height:
-            screenWidth <= 550
+            screenWidth <= 768
               ? `${screenHeight - 45}px`
               : `${screenHeight - headsHeight - 45}px`,
         }}
@@ -262,7 +263,7 @@ const DetailedCV = (props) => {
         //   position: "relative",
         //   maxHeight: `${screenHeight - headsHeight - 45}px`,
         //   height:
-        //     screenWidth <= 550
+        //     screenWidth <= 768
         //       ? `${screenHeight - 45}px`
         //       : `${screenHeight - headsHeight - 45}px`,
         // }}
@@ -352,7 +353,7 @@ const DetailedCV = (props) => {
           Scroll to Top
         </button>
       </div>
-      {screenWidth <= 550 && <Footer />}
+      {screenWidth <= 768 && <Footer />}
     </div>
   );
 };
