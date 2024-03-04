@@ -7,6 +7,7 @@
     overflow:hidden;
     overflow-y:auto;
     position:relative;
+    margin: 0rem 0.5rem 0rem 0.5rem;
 }
 
 .footerBar{

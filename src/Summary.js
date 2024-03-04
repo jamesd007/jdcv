@@ -118,6 +118,7 @@ const Summary = (props) => {
           screenWidth <= 768
             ? `${screenHeight - 45}px`
             : `${screenHeight - headsHeight - 45}px`,
+        // margin: screenWidth <= 768 && "0px",
       }}
     >
       <h3>About Me</h3>

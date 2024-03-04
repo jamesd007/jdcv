@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import styled, { keyframes, css } from "styled-components";
 import "./App.css";
 import { StyleSheetManager } from "styled-components";
@@ -20,6 +20,11 @@ background-color:white;
 }
 `;
 
+// transform: translate(${window.innerWidth / 2 - (window.innerWidth <= 768 ? window.innerHeight / 7.6 : window.innerHeight / 3.6) / 2}px,
+// ${(window.innerHeight * 67) / 100 - (window.innerWidth <= 768 ? window.innerHeight / 7.6 : window.innerHeight / 3.6)}px);
+// transform: translate(${window.innerWidth / 2 - window.innerHeight / 1.8 / 2}px,
+// ${(window.innerHeight * 67) / 100 - window.innerHeight / 1.8}px);
+
 const fadeIn = keyframes`
 from {
 opacity: 0;
@@ -38,13 +43,16 @@ const AnimatedDiv = styled.div`
 
 const growAnimation = keyframes`
 from {
-transform:  scale(0);
-
+  opacity:0;
+  font-size:10px;
 }
 to {
-transform: scale(3);
+  opacity:1;
+  font-size:20px;
 }
 `;
+// transform:  scale(0);
+// transform: scale(3);
 
 const StyledDiv = styled.div`
   position: absolute;
@@ -57,7 +65,7 @@ const StyledDiv = styled.div`
   animation: ${growAnimation} 1s ease forwards;
   transform-origin: center; /* Set the origin to the center */
 `;
-
+// animation: ${growAnimation} 1s ease forwards;
 const growSubAnimation = keyframes`
 from {
 transform: scale(0);
@@ -90,6 +98,7 @@ const BigLight = (props) => {
   };
 
   const handleStyledDivAnimationEnd = () => {
+    console.log("tedtest handleStyledDivAnimationEnd");
     setShowSubTitle(true);
   };
 
@@ -116,6 +125,7 @@ const BigLight = (props) => {
     >
       <StyleSheetManager shouldForwardProp={shouldForwardProp}>
         <div className={showText ? "scroll-out" : ""} ref={ssmRef}>
+          <button onClick={() => props.callback(true)}>testtedtest</button>
           <AnimatedDiv
             x={window.innerWidth}
             y={(window.innerHeight * 67) / 100 - 100}
@@ -123,11 +133,14 @@ const BigLight = (props) => {
             onAnimationEnd={(e) => handleAnimationEnd(e)}
           />
 
-          {showTitle && (
-            <StyledDiv onAnimationEnd={(e) => handleStyledDivAnimationEnd(e)}>
-              <span>James Doyle</span>
-            </StyledDiv>
-          )}
+          {
+            // showTitle
+            true && (
+              <StyledDiv onAnimationEnd={(e) => handleStyledDivAnimationEnd(e)}>
+                <span>James Doyle</span>
+              </StyledDiv>
+            )
+          }
           {showSubTitle && (
             <StyledSubDiv onAnimationEnd={(e) => handleSubTitleEnd(e)}>
               <span>Curriculum Vitae</span>

@@ -234,12 +234,6 @@ const DetailedCV = (props) => {
     );
   };
 
-  useEffect(() => {
-    console.log("tedtestDCG screenHeight=", screenHeight);
-    console.log("tedtestDCG headsHeight=", headsHeight);
-    console.log("tedtestDCG screenwidth=", screenWidth);
-  }, [screenHeight, headsHeight, screenWidth]);
-
   return (
     <div>
       <div

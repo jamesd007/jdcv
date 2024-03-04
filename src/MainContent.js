@@ -74,12 +74,6 @@ const MainContent = () => {
     );
   };
 
-  useEffect(() => {
-    console.log("tedtestG app screenHeight=", screenHeight);
-    console.log("tedtestG app headHgt=", headHgt);
-    console.log("tedtestG app screenwidth=", screenWidth);
-  }, [screenHeight, headHgt, screenWidth]);
-
   return (
     <div
       style={{
@@ -93,7 +87,10 @@ const MainContent = () => {
         style={{
           width: "90%",
           padding: "0 5px 0 5px",
-          maxWidth: `${maxCol1Size + maxCol2Size + maxCol3Size}px`,
+          maxWidth:
+            screenWidth <= 768
+              ? `${window.innerWidth}px`
+              : `${maxCol1Size + maxCol2Size + maxCol3Size}px`,
           display: screenWidth <= 768 ? "" : "grid",
           gridTemplateColumns:
             screenWidth <= 768

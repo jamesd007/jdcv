@@ -271,13 +271,6 @@ const WeatherComponent = ({ onResize }) => {
     }
   }, []);
 
-  useEffect(() => {
-    console.log(
-      "tedtestGG colRef?.current?.clientHeight=",
-      colRef?.current?.clientHeight
-    );
-  }, [colRef?.current?.clientHeight]);
-
   return (
     <div ref={colRef}>
       <div>

@@ -22,27 +22,32 @@ const JDPic = () => {
     <div className="picContainer">
       <div
         style={{
-          position: screenWidth <= 1000 ? "absolute" : "relative",
-          top: screenWidth <= 1000 && "4px",
-          left: screenWidth <= 1000 && "4px",
-          // : screenWidth<=1000
+          position: window.innerWidth <= 1000 ? "absolute" : "relative",
+          top: window.innerWidth <= 1000 && "4px",
+          left: window.innerWidth <= 1000 && "4px",
+          // : window.innerWidth<=1000
           // ? "18px'"
           // : {},
           zIndex: "10",
-          height: `${screenHeight / 5.4}px`,
+          height: `${window.innerHeight / 5.4}px`,
           width: "auto",
           border: "3px solid darkblue",
           borderRadius: "50%",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          gridColumn: screenWidth <= 768 ? {} : screenWidth <= 1000 ? "1" : "1",
+          gridColumn:
+            window.innerWidth <= 768
+              ? {}
+              : window.innerWidth <= 1000
+              ? "1"
+              : "1",
         }}
       >
         <img
           className="picImg"
           style={{
-            height: `${screenHeight / 5.4}px`,
+            height: `${window.innerHeight / 5.4}px`,
             width: "auto",
           }}
           src={jdimg2}

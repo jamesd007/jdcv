@@ -5,14 +5,27 @@ import DetailedCV from "./DetailedCV";
 import SkillsShow from "./SkillsShow";
 import MoveTest from "./MoveTest";
 import BigLight from "./BigLight";
+import { isMobileTablet } from "./utils/utilities";
 
 function App() {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [audioLoaded, setAudioLoaded] = useState(false);
   const [audioStarted, setAudioStarted] = useState(false);
-  const [splashed, setSplashed] = useState(false);
-  const [showIntro, setShowIntro] = useState(true);
+  const [splashed, setSplashed] = useState();
+  const [showIntro, setShowIntro] = useState();
+
+  useEffect(() => {
+    if (isMobileTablet()) {
+      console.log("tedtestING this is a mobile or tablet");
+      setShowIntro(false);
+      setSplashed(true);
+    } else {
+      console.log("tedtestING this is NOT a mobile or tablet");
+      setShowIntro(true);
+      setSplashed(false);
+    }
+  }, []);
 
   useEffect(() => {
     // Preload the audio file
@@ -46,7 +59,6 @@ function App() {
   };
 
   const handleSkipIntro = () => {
-    console.log("tedtestAAA skipping intro");
     setShowIntro(false);
     setSplashed(true);
   };
@@ -54,19 +66,27 @@ function App() {
   return (
     <div
       style={{
-        width: `${screenWidth}px`,
-        maxWidth: `${screenWidth}px`,
-        overflow: "hidden",
+        width: "100%", // Set width to 100% to occupy the entire width of the screen
+        height: "100%", // Set height to 100% to occupy the entire height of the screen
+        position: "relative", // Set position to relative for proper absolute positioning of the button
       }}
+      // style={{
+      //   width: `${window.innerWidth}px`,
+      //   maxWidth: `${window.innerWidth}px`,
+      //   maxHeight: `${window.innerHeight}px`,
+      //   overflow: "hidden",
+      // }}
     >
       <div className={splashed ? "scroll-out" : "blackBackground"}>
-        <button
-          style={{ position: "absolute", right: "20px", bottom: "20px" }}
-          onClick={handleSkipIntro}
-        >
-          Skip Intro
-        </button>
-        {(!audioStarted || !audioLoaded) && (
+        {showIntro && (
+          <button
+            style={{ position: "absolute", right: "50px", bottom: "50px" }}
+            onClick={handleSkipIntro}
+          >
+            Skip Intro
+          </button>
+        )}
+        {(!audioStarted || !audioLoaded) && showIntro && (
           <div>
             <button className="actionButton" onClick={() => startAudio()}>
               <p
@@ -103,18 +123,21 @@ function App() {
       </div>
       {splashed && (
         <div
-          style={{ width: `${screenWidth}px`, maxWidth: `${screenWidth}px` }}
+          style={{
+            width: `${window.innerWidth}px`,
+            maxWidth: `${window.innerWidth}px`,
+          }}
         >
-          {screenWidth > 768 ? (
+          {window.innerWidth <= 768 ? (
             <BrowserRouter>
               <div>
-                {screenWidth <= 768 ? (
+                {window.innerWidth <= 768 ? (
                   <Routes>
                     <Route path="/detailedcv" element={<DetailedCV />} />
                     <Route path="/skillsshow" element={<SkillsShow />} />
                     <Route exact path="/" element={<MainContent />} />
                   </Routes>
-                ) : screenWidth <= 1000 ? (
+                ) : window.innerWidth <= 1000 ? (
                   <Routes>
                     <Route path="/detailedcv" element={<DetailedCV />} />
                     <Route path="/skillsshow" element={<SkillsShow />} />
@@ -126,7 +149,7 @@ function App() {
               </div>
             </BrowserRouter>
           ) : (
-            {}
+            <MainContent />
           )}
         </div>
       )}

@@ -30,7 +30,7 @@ const MoonRising = () => {
     position: "absolute",
     top: "0px",
     left: "0px",
-    height: `${screenHeight * 0.2 * 0.5}px`,
+    height: `${window.innerHeight * 0.2 * 0.5}px`,
     width: "100%",
     backgroundColor: "#464efe",
     overflow: "hidden",
@@ -91,7 +91,7 @@ const MoonRising = () => {
         border: "1px solid black",
         overflow: "hidden",
         width: "100%",
-        height: `${screenHeight * 0.2}px`,
+        height: `${window.innerHeight * 0.2}px`,
       }}
     >
       <div
@@ -101,7 +101,7 @@ const MoonRising = () => {
           bottom: "0.2rem",
           fontSize: screenWidth <= 1000 ? "1.8rem" : "1.8rem",
           fontWeight: "bold",
-          marginLeft: "1rem",
+          marginLeft: screenWidth < 768 ? "1.5rem" : "1rem",
           zIndex: screenWidth < 768 ? "99" : "9",
           color:
             screenWidth < 768
@@ -138,10 +138,10 @@ const MoonRising = () => {
       <div //ground
         style={{
           position: "absolute",
-          top: `${screenHeight * 0.2 * 0.5}px`,
+          top: `${window.innerHeight * 0.2 * 0.5}px`,
           left: "0",
           width: "100%",
-          height: `${screenHeight * 0.2 * 0.5}px`,
+          height: `${window.innerHeight * 0.2 * 0.5}px`,
           backgroundColor: "#1f26c8",
           zIndex: "7",
         }}

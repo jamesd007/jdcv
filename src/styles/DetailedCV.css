@@ -12,12 +12,6 @@ ul{
      margin: 0
 }
 
-.container{
-     overflow:hidden;
-     overflow-y:auto;
-     position:relative;
-}
-    
 .cellContainer{
      height:180px;
 }
