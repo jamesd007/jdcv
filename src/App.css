@@ -7,6 +7,7 @@
     width:100vw;
     background-color: var(--background-color);
     position: relative;
+    overflow: hidden;
     }
     
     .ballContainer {
@@ -45,3 +46,54 @@
     }
     }
     
+    /* new pages */
+
+    .wrapper {
+        padding: 20px;
+    }
+
+    .navbar {
+        background-color: #333; /* Set background color */
+        color: #fff; /* Set text color */
+        padding: 10px 0; /* Add some padding */
+        position: sticky;
+        top:0;
+        left:0;
+        z-index: 99;
+      }
+      
+      .navbar h1 {
+        margin: 0; /* Remove default margin */
+        padding: 0 20px; /* Add some padding */
+      }
+      
+      .navbar ul {
+        list-style-type: none; /* Remove default list style */
+        padding: 0; /* Remove default padding */
+        margin: 0; /* Remove default margin */
+      }
+      
+      .navbar ul li {
+        display: inline; /* Display list items horizontally */
+        margin-right: 20px; /* Add some space between items */
+        cursor: pointer;
+      }
+      
+      .navbar ul li:last-child {
+        margin-right: 0; /* Remove margin from last item */
+      }
+      
+      .navbar ul li a {
+        color: #fff; /* Set link text color */
+        text-decoration: none; /* Remove underline */
+      }
+      
+      .navbar ul li a:hover {
+        text-decoration: underline; /* Add underline on hover */
+      }
+
+      .content {
+        padding: 20px;
+        background-color: #f0f0f0;
+      }
+      

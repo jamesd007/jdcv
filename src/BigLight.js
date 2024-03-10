@@ -125,7 +125,7 @@ const BigLight = (props) => {
     >
       <StyleSheetManager shouldForwardProp={shouldForwardProp}>
         <div className={showText ? "scroll-out" : ""} ref={ssmRef}>
-          <button onClick={() => props.callback(true)}>testtedtest</button>
+          {/* <button onClick={() => props.callback(true)}>testtedtest</button> */}
           <AnimatedDiv
             x={window.innerWidth}
             y={(window.innerHeight * 67) / 100 - 100}
