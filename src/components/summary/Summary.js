@@ -1,14 +1,4 @@
-// import React from "react";
-
-// const Summary = () => {
-//   return (
-//     <div style={{ position: "absolute", left: "30px", top: "100px" }}>
-//       The most summarised summary in the www
-//     </div>
-//   );
-// };
-// export default Summary;
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import "../../styles/Summary.css";
 // import "../../styles/Main.css"
 // import "./styles/Summary.css";
@@ -16,6 +6,7 @@ import Modals from "../../Modals";
 // import Modals from "./Modals";
 import { FaCaretRight } from "react-icons/fa";
 import { FaCaretDown } from "react-icons/fa";
+import { HeaderContext } from "../../contexts/HeaderContext";
 
 const Summary = (props) => {
   const [screenHeight, setScreenHeight] = useState(window.innerHeight);
@@ -23,14 +14,8 @@ const Summary = (props) => {
   const [modalOpen, setModalOpen] = useState(false);
   const emailAddress = "pers@stardev.co.za";
   const containerRef = useRef(null);
-  const [headsHeight, setHeadsHeight] = useState(
-    props?.headsHeight ? props?.headsHeight : 0
-  );
-
-  useEffect(() => {
-    setHeadsHeight(props.headsHeight);
-  }, [props.headsHeight]);
-
+  const { headerHeight } = useContext(HeaderContext);
+  console.log("tedtest props=", props);
   const skillsData = [
     {
       title: "Civil Engineering",
@@ -126,21 +111,25 @@ const Summary = (props) => {
       className="container"
       style={{
         position: "relative",
-        maxHeight: `${screenHeight - headsHeight - 45}px`,
+        maxHeight: `${screenHeight - headerHeight - 60}px`,
         height:
           screenWidth <= 768
-            ? `${screenHeight - 45}px`
-            : `${screenHeight - headsHeight - 45}px`,
+            ? `${screenHeight - headerHeight - 60}px`
+            : `${screenHeight - headerHeight - 60}px`,
         // margin: screenWidth <= 768 && "0px",
       }}
     >
-      <h3>About Me</h3>
-      <div style={{ fontSize: "1rem" }}>
+      <h3>Welcome</h3>
+      {/* <h3>About Me</h3> */}
+      <div style={{ fontSize: "1rem", whiteSpace: "pre-wrap" }}>
+        <p style={{ fontSize: "1rem", whiteSpace: "pre-wrap" }}>
+          Thank you for visiting my website!
+        </p>
         <p>
-          A career spanning more than 30 years. Experience in civil engineering
-          and IT fields coupled with exposure to financial controls, project
-          management and contracts, I bring a wealth of experience and
-          versatility to any project.
+          With over 30 years of experience in various fields including, civil
+          engineering, IT, financial controls, project management, and
+          contracts, I bring a wealth of expertise and versatility to every
+          endeavor.
         </p>
         <p>Passionate about problem-solving, enthusiastic about life.</p>
         <p>
@@ -154,7 +143,7 @@ const Summary = (props) => {
           >
             Read here for more…
           </span>
-          or view a point by point CV on this page
+          or view a point by point CV in the Detailed CV menu link
         </p>
         {modalOpen && (
           <Modals

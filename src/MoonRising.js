@@ -51,13 +51,13 @@ const MoonRising = () => {
   const moonOverlayStyle = {
     position: "absolute",
     top: "-90%",
-    right: "12%",
+    right: "15%",
     width: "100px",
     height: "100px",
     backgroundColor: "rgba(255, 255, 255, 0)",
     borderRadius: "50%",
     zIndex: 5,
-    animation: "moonOverlayChange 45s linear",
+    animation: "moonOverlayChange 45s linear 1s",
   };
 
   // const treeStyle = {
@@ -110,17 +110,7 @@ const MoonRising = () => {
               ? "darkkhaki"
               : "lightsteelblue",
         }}
-      >
-        <p style={{ margin: "0" }}>James Doyle</p>
-        <p
-          style={{
-            fontSize: screenWidth <= 1000 ? "1.2rem" : "1.4rem",
-            margin: "0",
-          }}
-        >
-          Curriculum Vitae
-        </p>
-      </div>
+      ></div>
       <div style={skyStyle}></div>
       {/* <div //sky
         style={{
@@ -149,13 +139,14 @@ const MoonRising = () => {
       <div //trees
       >
         <img
+          className="tree-image"
           style={{
-            position: "absolute",
-            top: "0",
-            left: "0",
-            height: "100%",
-            width: "100%",
-            zIndex: "9",
+            right:
+              window.innerWidth <= 768
+                ? "1%"
+                : window.innerWidth < 1000
+                ? "4%"
+                : "16%",
           }}
           src={bluetrees}
           alt="trees"
@@ -195,20 +186,7 @@ const MoonRising = () => {
       </div> */}
       <div //moon
       >
-        <img
-          style={{
-            position: "absolute",
-            top: "-90%",
-            right: "12%",
-            opacity: "1",
-            height: "100px",
-            width: "100px",
-            zIndex: "4",
-            animation: "moonRising 45s linear ", // Customize the animation properties
-          }}
-          src={moon}
-          alt="moon"
-        ></img>
+        <img className="moon-image" src={moon} alt="moon"></img>
       </div>
       <div style={moonOverlayStyle}></div>
     </div>

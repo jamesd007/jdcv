@@ -1,7 +1,7 @@
 
 @keyframes moonRising {
     0% {
-      transform: translateY(160%);
+      transform: translateY(180%);
       opacity: 1;
     }
     /* 30%{
@@ -20,7 +20,7 @@
   
   @keyframes moonOverlayChange {
     0% {
-      transform: translateY(160%);
+      transform: translateY(180%);
       background-color: rgba(255, 255, 255, 0); /* Fully transparent white */
     }
     50% {
@@ -77,4 +77,24 @@
   100% {
     background-color: #464efe; 
   }
+}
+
+.moon-image{
+  position: absolute;
+  top: -90%;
+  right: 15%;
+  opacity: 1;
+  height: 100px;
+  width: 100px;
+  z-index: 4;
+  animation: moonRising 45s linear 1s;
+}
+
+.tree-image{
+  position: absolute;
+top: 0;
+right: 8%;
+height: 100%;
+width: 620px;
+z-index: 9;
 }

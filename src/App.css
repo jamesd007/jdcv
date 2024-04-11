@@ -34,7 +34,7 @@
     }
     
     .scroll-out {
-    animation: moveFade 10s linear forwards;
+    animation: moveFade 4s linear forwards;
     }
     
     @keyframes moveFade{
@@ -48,18 +48,24 @@
     
     /* new pages */
 
+    .main-frame{
+      width: 100%;
+      overflow: hidden;
+    }
+
     .wrapper {
         padding: 20px;
     }
 
     .navbar {
-        background-color: #333; /* Set background color */
+        background-color: lightgray; /* Set background color */
         color: #fff; /* Set text color */
         padding: 10px 0; /* Add some padding */
         position: sticky;
         top:0;
         left:0;
         z-index: 99;
+        padding-left: 1rem;
       }
       
       .navbar h1 {
@@ -84,7 +90,7 @@
       }
       
       .navbar ul li a {
-        color: #fff; /* Set link text color */
+        color: blue; /* Set link text color */
         text-decoration: none; /* Remove underline */
       }
       

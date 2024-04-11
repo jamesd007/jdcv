@@ -20,11 +20,6 @@ background-color:white;
 }
 `;
 
-// transform: translate(${window.innerWidth / 2 - (window.innerWidth <= 768 ? window.innerHeight / 7.6 : window.innerHeight / 3.6) / 2}px,
-// ${(window.innerHeight * 67) / 100 - (window.innerWidth <= 768 ? window.innerHeight / 7.6 : window.innerHeight / 3.6)}px);
-// transform: translate(${window.innerWidth / 2 - window.innerHeight / 1.8 / 2}px,
-// ${(window.innerHeight * 67) / 100 - window.innerHeight / 1.8}px);
-
 const fadeIn = keyframes`
 from {
 opacity: 0;
@@ -51,8 +46,6 @@ to {
   font-size:20px;
 }
 `;
-// transform:  scale(0);
-// transform: scale(3);
 
 const StyledDiv = styled.div`
   position: absolute;
@@ -65,7 +58,7 @@ const StyledDiv = styled.div`
   animation: ${growAnimation} 1s ease forwards;
   transform-origin: center; /* Set the origin to the center */
 `;
-// animation: ${growAnimation} 1s ease forwards;
+
 const growSubAnimation = keyframes`
 from {
 transform: scale(0);
@@ -98,7 +91,6 @@ const BigLight = (props) => {
   };
 
   const handleStyledDivAnimationEnd = () => {
-    console.log("tedtest handleStyledDivAnimationEnd");
     setShowSubTitle(true);
   };
 
@@ -125,7 +117,6 @@ const BigLight = (props) => {
     >
       <StyleSheetManager shouldForwardProp={shouldForwardProp}>
         <div className={showText ? "scroll-out" : ""} ref={ssmRef}>
-          {/* <button onClick={() => props.callback(true)}>testtedtest</button> */}
           <AnimatedDiv
             x={window.innerWidth}
             y={(window.innerHeight * 67) / 100 - 100}

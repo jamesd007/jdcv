@@ -1,22 +1,15 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
-import Summary from "./components/summary/Summary";
-import DetailedCV from "./components/detailedcv/DetailedCV";
-import OtherThings from "./components/otherthings/OtherThings";
-import JDPic from "./JDPic";
-import { Link } from "react-router-dom";
-import "./styles/Main.css";
-import MoonRising from "./MoonRising";
-import { HeaderContext } from "./contexts/HeaderContext";
+import Summary from "../summary/Summary";
+import DetailedCV from "../detailedcv/DetailedCV";
+import "../../styles/Main.css";
+import { HeaderContext } from "../../contexts/HeaderContext";
 
-const MainContent = () => {
+const SummaryAndDetailedCV = () => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [screenHeight, setScreenHeight] = useState(window.innerHeight);
   const maxCol1Size = 300;
   const maxCol2Size = 700;
   const maxCol3Size = 300;
-  const [headHgt, setHeadHgt] = useState(0);
-  // const headerContainerRef = useRef(null);
-  const { headerHeight } = useContext(HeaderContext);
 
   useEffect(() => {
     function handleResize() {
@@ -42,15 +35,10 @@ const MainContent = () => {
         style={{
           width: "90%",
           padding: "0 5px 0 5px",
-          maxWidth:
-            screenWidth <= 768
-              ? `${window.innerWidth}px`
-              : `${maxCol1Size + maxCol2Size + maxCol3Size}px`,
-          display: screenWidth <= 768 ? "" : "grid",
+          maxWidth: `${maxCol1Size + maxCol2Size + maxCol3Size}px`,
+          display: "grid",
           gridTemplateColumns:
-            screenWidth <= 768
-              ? {}
-              : screenWidth <= 1000
+            screenWidth <= 1000
               ? screenWidth <= 800
                 ? "1fr 1fr"
                 : `${maxCol1Size}px 1fr`
@@ -62,23 +50,21 @@ const MainContent = () => {
         <div
           style={{
             position: screenWidth <= 1000 ? "absolute" : "relative",
-            left:
-              screenWidth <= 768 ? "10px" : screenWidth <= 1000 ? "18px'" : {},
+            left: screenWidth <= 1000 ? "18px'" : {},
             zIndex: "10",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            gridColumn:
-              screenWidth <= 768 ? {} : screenWidth <= 1000 ? "1" : "1",
+            gridColumn: screenWidth <= 1000 ? "1" : "1",
           }}
         ></div>
         <div
           style={{
             width: "100%",
-            gridColumn: screenWidth <= 768 ? {} : "1",
+            gridColumn: "1",
           }}
         >
-          <Summary tedtest="this is from MAINCONTENT" />
+          <Summary tedtest="this is from SUMMARYANDDETAILEDCV" />
         </div>
         {screenWidth > 768 && (
           <div
@@ -90,10 +76,9 @@ const MainContent = () => {
             <DetailedCV />
           </div>
         )}
-        {screenWidth > 1000 && <OtherThings />}
       </div>
     </div>
   );
 };
 
-export default MainContent;
+export default SummaryAndDetailedCV;

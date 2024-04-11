@@ -1,35 +1,20 @@
-// import React from "react";
-
-// export default function DetailedCV() {
-//   return (
-//     <div style={{ position: "absolute", left: "30px", top: "100px" }} iv>
-//       DetailedCV
-//     </div>
-//   );
-// }
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useContext } from "react";
 import Section from "../../Section";
-// import Section from "./Section";
 import { Element, scroller } from "react-scroll";
 import Contents from "../../Contents";
-// import Contents from "./Contents";
 import "../../styles/DetailedCV.css";
 import "../../styles/Main.css";
 import { Link } from "react-router-dom";
+import { HeaderContext } from "../../contexts/HeaderContext";
 
 const DetailedCV = (props) => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [screenHeight, setScreenHeight] = useState(window.innerHeight);
   const [showButton, setShowButton] = useState(false);
   const containerRef = useRef();
-  const [headsHeight, setHeadsHeight] = useState(
-    props?.headsHeight ? props?.headsHeight : 200
-  );
+  const { headerHeight } = useContext(HeaderContext);
   const ftrRef = useRef(null);
   const [ftrHeight, setFtrHeight] = useState(16);
-  useEffect(() => {
-    setHeadsHeight(props.headsHeight);
-  }, [props.headsHeight]);
 
   const keyValuePairs = [
     ["Surname", "Doyle"],
@@ -188,17 +173,6 @@ const DetailedCV = (props) => {
     });
   };
 
-  // useEffect(() => {
-  //   function handleResize() {
-  //     setScreenHeight(window.innerHeight);
-  //     setScreenWidth(window.innerWidth);
-  //   }
-  //   window.addEventListener("resize", handleResize);
-  //   return () => {
-  //     window.removeEventListener("resize", handleResize);
-  //   };
-  // }, []);
-
   const KeyValueList = ({ data }) => {
     return (
       <div>
@@ -223,55 +197,18 @@ const DetailedCV = (props) => {
     } else setFtrHeight(16);
   }, [ftrRef?.current?.clientHeight]);
 
-  const Footer = () => {
-    return (
-      <div
-        ref={ftrRef}
-        className="footerMenu"
-        style={{
-          maxWidth: `{screenWidth}px`,
-          left: "0px",
-        }}
-      >
-        <Link to="/" className="footerLink">
-          /Home
-        </Link>
-        {screenWidth <= 768 && (
-          <Link to="/skillsshow" className="footerLink">
-            Some other things
-          </Link>
-        )}
-      </div>
-    );
-  };
-
   return (
     <div>
       <div
         className="container"
         style={{
           position: "relative",
-          maxHeight: `${screenHeight - 45}px`,
+          maxHeight: `${screenHeight - 60}px`,
           height:
             screenWidth <= 768
-              ? `${screenHeight - 45}px`
-              : `${screenHeight - headsHeight - 45}px`,
+              ? `${screenHeight - headerHeight - 60}px`
+              : `${screenHeight - headerHeight - 60}px`,
         }}
-        // style={{
-        //   position: "relative",
-        //   height:
-        //     screenWidth <= 1000
-        //       ? `${screenHeight - 45}px`
-        //       : `${screenHeight - 180}px`,
-        // }}
-        // style={{
-        //   position: "relative",
-        //   maxHeight: `${screenHeight - headsHeight - 45}px`,
-        //   height:
-        //     screenWidth <= 768
-        //       ? `${screenHeight - 45}px`
-        //       : `${screenHeight - headsHeight - 45}px`,
-        // }}
         onScroll={handleScroll}
         ref={containerRef}
       >
@@ -358,7 +295,6 @@ const DetailedCV = (props) => {
           Scroll to Top
         </button>
       </div>
-      {screenWidth <= 768 && <Footer />}
     </div>
   );
 };

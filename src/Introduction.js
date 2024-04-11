@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-// import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import MainContent from "./MainContent";
-// import DetailedCV from "./DetailedCV";
-// import SkillsShow from "./SkillsShow";
 import MoveTest from "./MoveTest";
 import BigLight from "./BigLight";
 import { isMobileTablet } from "./utils/utilities";
@@ -17,11 +13,9 @@ const Introduction = ({ endIntro }) => {
 
   useEffect(() => {
     if (isMobileTablet()) {
-      console.log("tedtestING this is a mobile or tablet");
       setShowIntro(false);
       setSplashed(true);
     } else {
-      console.log("tedtestING this is NOT a mobile or tablet");
       setShowIntro(true);
       setSplashed(false);
     }

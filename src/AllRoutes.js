@@ -7,46 +7,148 @@ import {
   Link,
   useNavigate,
 } from "react-router-dom";
-
+import { useLocation } from "react-router-dom";
 import Introduction from "./Introduction";
 import Summary from "./components/summary/Summary";
 import DetailedCV from "./components/detailedcv/DetailedCV";
 import OtherThings from "./components/otherthings/OtherThings";
+import MainContent from "./MainContent";
+import Header from "./components/Header";
+import { HeaderProvider } from "./contexts/HeaderContext";
+import SummaryAndDetailedCV from "./components/summaryAndDetailedCV/SummaryAndDetailedCV";
+
+const Navigation = ({
+  showHome,
+  showDetailedCV,
+  showOther,
+  showSummaryAndDetailedCV,
+  showMainContent,
+}) => {
+  return (
+    <div>
+      {showHome ||
+        showDetailedCV ||
+        (showOther && !showMainContent && (
+          <nav className="navbar">
+            <ul>
+              {showHome && (
+                <li>
+                  <Link to="/">Home</Link>
+                </li>
+              )}
+              {showSummaryAndDetailedCV && (
+                <li>
+                  <Link to="/summaryanddetailedcv">Home</Link>
+                </li>
+              )}
+              {/* <li>
+          <Link to="/introduction">Introduction</Link>
+        </li> */}
+              {showDetailedCV && (
+                <li>
+                  <Link to="/detailedcv">Detailed CV</Link>
+                </li>
+              )}
+              {showOther && (
+                <li>
+                  <Link to="/otherthings">Other things</Link>
+                </li>
+              )}
+            </ul>
+          </nav>
+        ))}
+    </div>
+  );
+};
 
 function AllRoutes(props) {
-  console.log("tedtest props=", props);
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  const [screenHeight, setScreenHeight] = useState(window.innerHeight);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const maxCol1Size = 300;
+  const maxCol2Size = 700;
+  const maxCol3Size = 300;
+
+  useEffect(() => {
+    function handleResize() {
+      setScreenHeight(window.innerHeight);
+      setScreenWidth(window.innerWidth);
+    }
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    console.log("tedtestR into useeffect screenWidth=", screenWidth);
+    console.log(
+      "tedtestR into useeffect location.pathname=",
+      location.pathname
+    );
+    if (screenWidth > 1000) navigate("/maincontent");
+    else if (
+      screenWidth > 768 &&
+      screenWidth < 1000 &&
+      location.pathname === "/"
+    ) {
+      navigate("/summaryanddetailedcv");
+    } else if (
+      screenWidth <= 768 &&
+      location.pathname === "/summaryanddetailedcv"
+    ) {
+      navigate("/");
+    } else if (
+      screenWidth > 768 &&
+      screenWidth < 1000 &&
+      location.pathname === "/detailedcv"
+    ) {
+      console.log("tedtestR changing now.");
+      navigate("/summaryanddetailedcv");
+    }
+  }, [location, screenWidth, navigate]);
+
   return (
-    <div
-    // style={{ display: props.authenticated ? {} : "none" }}
-    >
-      <nav className="navbar">
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          {/* <li>
-            <Link to="/introduction">Introduction</Link>
-          </li> */}
-          <li>
-            <Link to="/summary">Summary</Link>
-          </li>
-          <li>
-            <Link to="/detailedcv">Detailed CV</Link>
-          </li>
-          <li>
-            <Link to="/otherthings">Other things</Link>
-          </li>
-        </ul>
-      </nav>
-      {/* )} */}
-      <Routes>
-        <Route path="/" element={<Summary />} />
-        <Route path="/summary" element={<Summary />} />
-        <Route path="/detailedcv" element={<DetailedCV />} />
-        <Route path="/otherthings" element={<OtherThings />} />
-        <Route path="/introduction" element={<Introduction />} />
-      </Routes>
-    </div>
+    <HeaderProvider>
+      <div
+        className="main-frame"
+        // style={{ width: `${window.innerWidth}px`, overflow: "hidden" }}
+      >
+        <Header />
+        <Navigation
+          showHome={screenWidth <= 768}
+          showDetailedCV={
+            screenWidth <= 768 ||
+            (screenWidth < 1000 && location.pathname === "/otherthings")
+          }
+          showOther={
+            screenWidth <= 768 ||
+            (screenWidth < 1000 &&
+              location.pathname === "/summaryanddetailedcv")
+          }
+          showSummaryAndDetailedCV={
+            screenWidth > 768 &&
+            screenWidth < 1000 &&
+            (location.pathname === "/otherthings" ||
+              location.pathname === "/summaryanddetailedcv")
+          }
+          showMainContent={screenWidth > 1000}
+        />
+        <Routes>
+          <Route path="/" element={<Summary />} />
+          <Route path="/summary" element={<Summary />} />
+          <Route path="/detailedcv" element={<DetailedCV />} />
+          <Route path="/otherthings" element={<OtherThings />} />
+          <Route path="/introduction" element={<Introduction />} />
+          <Route
+            path="/summaryanddetailedcv"
+            element={<SummaryAndDetailedCV />}
+          />
+          <Route path="/maincontent" element={<MainContent />} />
+        </Routes>
+      </div>
+    </HeaderProvider>
   );
 }
 
