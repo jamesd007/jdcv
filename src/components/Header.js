@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useContext } from "react";
 import MoonRising from "../MoonRising";
-import { HeaderContext } from "../contexts/HeaderContext";
 import jdimg2 from "../images/JDpic.png";
-import "../styles/JDPic.css";
+import "../styles/Header.css";
+import { isMobileTablet } from "../utils/utilities";
 
 const Header = () => {
   const headerContainerRef = useRef(null);
@@ -15,10 +15,7 @@ const Header = () => {
     <div
       ref={headerContainerRef}
       id="header-container"
-      style={{
-        width: "100%",
-        height: "fit-content",
-      }}
+      className="header-container"
     >
       <div style={{ gridColumn: window.innerWidth > 768 ? "2" : {} }}>
         <MoonRising />
@@ -57,29 +54,17 @@ const Header = () => {
               alt="pic"
             ></img>
             <div
-              style={{
-                top: "0",
-                left: "0",
-                zIndex: "10",
-                color: "lightgray",
-              }}
+              className="header-titles"
+              // style={{
+              //   whiteSpace: window.innerWidth > 768 ? "nowrap" : "normal",
+              // }}
             >
-              <span
-                style={{
-                  fontSize: "2rem",
-                  margin: "0",
-                }}
-              >
-                James Doyle
-              </span>
-              <span
-                style={{
-                  fontSize: "1.5rem",
-                  margin: "1rem",
-                }}
-              >
-                Curriculum Vitae
-              </span>
+              <span className="header-name">James Doyle</span>
+              {isMobileTablet() ? (
+                <p className="header-cv">Curriculum Vitae</p>
+              ) : (
+                <span className="header-cv">Curriculum Vitae</span>
+              )}
             </div>
           </div>
         </div>

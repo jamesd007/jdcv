@@ -26,37 +26,37 @@ const Navigation = ({
 }) => {
   return (
     <div>
-      {showHome ||
+      {/* {showHome ||
         showDetailedCV ||
-        (showOther && !showMainContent && (
-          <nav className="navbar">
-            <ul>
-              {showHome && (
-                <li>
-                  <Link to="/">Home</Link>
-                </li>
-              )}
-              {showSummaryAndDetailedCV && (
-                <li>
-                  <Link to="/summaryanddetailedcv">Home</Link>
-                </li>
-              )}
-              {/* <li>
+        (showOther && !showMainContent && ( */}
+      <nav className="navbar">
+        <ul>
+          {showHome && (
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+          )}
+          {showSummaryAndDetailedCV && (
+            <li>
+              <Link to="/summaryanddetailedcv">Home</Link>
+            </li>
+          )}
+          {/* <li>
           <Link to="/introduction">Introduction</Link>
         </li> */}
-              {showDetailedCV && (
-                <li>
-                  <Link to="/detailedcv">Detailed CV</Link>
-                </li>
-              )}
-              {showOther && (
-                <li>
-                  <Link to="/otherthings">Other things</Link>
-                </li>
-              )}
-            </ul>
-          </nav>
-        ))}
+          {showDetailedCV && (
+            <li>
+              <Link to="/detailedcv">Detailed CV</Link>
+            </li>
+          )}
+          {showOther && (
+            <li>
+              <Link to="/otherthings">Other things</Link>
+            </li>
+          )}
+        </ul>
+      </nav>
+      {/* ))} */}
     </div>
   );
 };
@@ -82,11 +82,6 @@ function AllRoutes(props) {
   }, []);
 
   useEffect(() => {
-    console.log("tedtestR into useeffect screenWidth=", screenWidth);
-    console.log(
-      "tedtestR into useeffect location.pathname=",
-      location.pathname
-    );
     if (screenWidth > 1000) navigate("/maincontent");
     else if (
       screenWidth > 768 &&
@@ -104,7 +99,6 @@ function AllRoutes(props) {
       screenWidth < 1000 &&
       location.pathname === "/detailedcv"
     ) {
-      console.log("tedtestR changing now.");
       navigate("/summaryanddetailedcv");
     }
   }, [location, screenWidth, navigate]);

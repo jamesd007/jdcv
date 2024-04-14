@@ -92,9 +92,10 @@
 
 .tree-image{
   position: absolute;
-top: 0;
+top: 50%;
+transform: translateY(-50%);
 right: 8%;
-height: 100%;
+height: auto;
 width: 620px;
 z-index: 9;
 }

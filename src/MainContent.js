@@ -1,11 +1,8 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Summary from "./components/summary/Summary";
 import DetailedCV from "./components/detailedcv/DetailedCV";
 import OtherThings from "./components/otherthings/OtherThings";
-import JDPic from "./JDPic";
-import { Link } from "react-router-dom";
 import "./styles/Main.css";
-import MoonRising from "./MoonRising";
 import { HeaderContext } from "./contexts/HeaderContext";
 
 const MainContent = () => {
@@ -40,7 +37,7 @@ const MainContent = () => {
     >
       <div
         style={{
-          width: "90%",
+          width: screenWidth > 768 ? "90%" : "100%",
           padding: "0 5px 0 5px",
           maxWidth:
             screenWidth <= 768
@@ -78,7 +75,7 @@ const MainContent = () => {
             gridColumn: screenWidth <= 768 ? {} : "1",
           }}
         >
-          <Summary tedtest="this is from MAINCONTENT" />
+          <Summary />
         </div>
         {screenWidth > 768 && (
           <div

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import moon from "./images/moon.png";
 import bluetrees from "./images/bluetrees.png";
 import "./styles/MoonRising.css";
+import { isMobileTablet } from "./utils/utilities";
 
 const MoonRising = () => {
   const [screenHeight, setScreenHeight] = useState(window.innerHeight);
@@ -51,7 +52,12 @@ const MoonRising = () => {
   const moonOverlayStyle = {
     position: "absolute",
     top: "-90%",
-    right: "15%",
+    right:
+      window.innerWidth <= 768
+        ? "12%"
+        : window.innerWidth < 1000
+        ? "12%"
+        : "20%",
     width: "100px",
     height: "100px",
     backgroundColor: "rgba(255, 255, 255, 0)",
@@ -136,22 +142,30 @@ const MoonRising = () => {
           zIndex: "7",
         }}
       ></div>
-      <div //trees
-      >
-        <img
-          className="tree-image"
-          style={{
-            right:
-              window.innerWidth <= 768
-                ? "1%"
-                : window.innerWidth < 1000
-                ? "4%"
-                : "16%",
-          }}
-          src={bluetrees}
-          alt="trees"
-        ></img>
-      </div>
+      <img
+        className="tree-image"
+        style={{
+          height: "auto",
+          width: isMobileTablet()
+            ? `${screenWidth * 0.8}px`
+            : window.innerWidth <= 768
+            ? `${screenWidth * 0.7}px`
+            : window.innerWidth < 1000
+            ? `${screenWidth * 0.6}px`
+            : window.innerWidth < 1300
+            ? `${screenWidth * 0.5}px`
+            : `${screenWidth * 0.4}px`,
+          right: isMobileTablet()
+            ? "2%"
+            : window.innerWidth <= 768
+            ? "8%"
+            : window.innerWidth < 1000
+            ? "4%"
+            : "8%",
+        }}
+        src={bluetrees}
+        alt="trees"
+      ></img>
       {/* <div //road
         >
         <img
@@ -186,7 +200,19 @@ const MoonRising = () => {
       </div> */}
       <div //moon
       >
-        <img className="moon-image" src={moon} alt="moon"></img>
+        <img
+          className="moon-image"
+          style={{
+            right:
+              window.innerWidth <= 768
+                ? "12%"
+                : window.innerWidth < 1000
+                ? "12%"
+                : "20%",
+          }}
+          src={moon}
+          alt="moon"
+        ></img>
       </div>
       <div style={moonOverlayStyle}></div>
     </div>

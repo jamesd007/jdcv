@@ -64,7 +64,7 @@ const SummaryAndDetailedCV = () => {
             gridColumn: "1",
           }}
         >
-          <Summary tedtest="this is from SUMMARYANDDETAILEDCV" />
+          <Summary />
         </div>
         {screenWidth > 768 && (
           <div

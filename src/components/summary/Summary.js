@@ -15,7 +15,7 @@ const Summary = (props) => {
   const emailAddress = "pers@stardev.co.za";
   const containerRef = useRef(null);
   const { headerHeight } = useContext(HeaderContext);
-  console.log("tedtest props=", props);
+
   const skillsData = [
     {
       title: "Civil Engineering",
@@ -157,7 +157,7 @@ const Summary = (props) => {
                 A seasoned professional with a rich background in civil
                 engineering and construction management, I began my career with
                 Basil Read in the 80s and later gained valuable experience at De
-                Leuw Cather. My expertise extends to programming in Turbo
+                Leuw Cather. My expertise extended to programming in Turbo
                 Pascal, where I developed applications for road sign design and
                 conducted economic analyses.
               </p>

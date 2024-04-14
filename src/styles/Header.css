@@ -1,0 +1,47 @@
+.picContainer{
+    top:0;
+    left:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background-color:lightcyan;
+}
+.picImg{
+    border:1px solid darkblue;
+    border-radius:50%;
+    height:8.2rem;
+    width:auto;
+    z-index:9;
+}
+
+.profile-image{
+  z-index: 10;
+  width: "auto";
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.header-container{
+    width: 100%;
+    height: fit-content;
+}
+
+.header-titles{
+    /* top: 0;
+    left: 0; */
+    z-index: 10;
+    color: lightgray;
+}
+
+.header-name{
+    font-size: 2rem;
+    margin-left: 1rem;
+    white-space: nowrap;
+}
+
+.header-cv{
+    font-size: 1.5rem;
+    margin-left: 1rem;
+    white-space: nowrap;
+}
