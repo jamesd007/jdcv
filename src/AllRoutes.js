@@ -1,12 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  Link,
-  useNavigate,
-} from "react-router-dom";
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import Introduction from "./Introduction";
 import Summary from "./components/summary/Summary";
@@ -26,37 +20,32 @@ const Navigation = ({
 }) => {
   return (
     <div>
-      {/* {showHome ||
-        showDetailedCV ||
-        (showOther && !showMainContent && ( */}
-      <nav className="navbar">
-        <ul>
-          {showHome && (
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-          )}
-          {showSummaryAndDetailedCV && (
-            <li>
-              <Link to="/summaryanddetailedcv">Home</Link>
-            </li>
-          )}
-          {/* <li>
-          <Link to="/introduction">Introduction</Link>
-        </li> */}
-          {showDetailedCV && (
-            <li>
-              <Link to="/detailedcv">Detailed CV</Link>
-            </li>
-          )}
-          {showOther && (
-            <li>
-              <Link to="/otherthings">Other things</Link>
-            </li>
-          )}
-        </ul>
-      </nav>
-      {/* ))} */}
+      {!showMainContent && (
+        <nav className="navbar">
+          <ul>
+            {showHome && (
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+            )}
+            {showSummaryAndDetailedCV && (
+              <li>
+                <Link to="/summaryanddetailedcv">Home</Link>
+              </li>
+            )}
+            {showDetailedCV && (
+              <li>
+                <Link to="/detailedcv">Detailed CV</Link>
+              </li>
+            )}
+            {showOther && (
+              <li>
+                <Link to="/otherthings">Other things</Link>
+              </li>
+            )}
+          </ul>
+        </nav>
+      )}
     </div>
   );
 };
@@ -66,9 +55,6 @@ function AllRoutes(props) {
   const [screenHeight, setScreenHeight] = useState(window.innerHeight);
   const location = useLocation();
   const navigate = useNavigate();
-  const maxCol1Size = 300;
-  const maxCol2Size = 700;
-  const maxCol3Size = 300;
 
   useEffect(() => {
     function handleResize() {
@@ -105,10 +91,7 @@ function AllRoutes(props) {
 
   return (
     <HeaderProvider>
-      <div
-        className="main-frame"
-        // style={{ width: `${window.innerWidth}px`, overflow: "hidden" }}
-      >
+      <div className="main-frame">
         <Header />
         <Navigation
           showHome={screenWidth <= 768}

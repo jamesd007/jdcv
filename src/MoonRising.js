@@ -147,7 +147,7 @@ const MoonRising = () => {
         style={{
           height: "auto",
           width: isMobileTablet()
-            ? `${screenWidth * 0.8}px`
+            ? `${screenWidth * 1}px`
             : window.innerWidth <= 768
             ? `${screenWidth * 0.7}px`
             : window.innerWidth < 1000
@@ -161,7 +161,7 @@ const MoonRising = () => {
             ? "8%"
             : window.innerWidth < 1000
             ? "4%"
-            : "8%",
+            : "16%",
         }}
         src={bluetrees}
         alt="trees"

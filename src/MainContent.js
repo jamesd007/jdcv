@@ -11,9 +11,6 @@ const MainContent = () => {
   const maxCol1Size = 300;
   const maxCol2Size = 700;
   const maxCol3Size = 300;
-  const [headHgt, setHeadHgt] = useState(0);
-  // const headerContainerRef = useRef(null);
-  const { headerHeight } = useContext(HeaderContext);
 
   useEffect(() => {
     function handleResize() {

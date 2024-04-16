@@ -128,7 +128,7 @@ const BigLight = (props) => {
             // showTitle
             true && (
               <StyledDiv onAnimationEnd={(e) => handleStyledDivAnimationEnd(e)}>
-                <span>James Doyle</span>
+                <span style={{ fontSize: "1.5rem" }}>James Doyle</span>
               </StyledDiv>
             )
           }
