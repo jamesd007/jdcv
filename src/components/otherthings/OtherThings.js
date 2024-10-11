@@ -41,9 +41,9 @@ const OtherThings = (props) => {
           // onResize={handleResize}
           />
         </div>
-        <div>
+        {/* <div>
           <GetQuotes />
-        </div>
+        </div> */}
       </div>
     </div>
   );
